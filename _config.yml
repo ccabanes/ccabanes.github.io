@@ -1,15 +1,21 @@
-name: Your New Jekyll Site
-description: Blogging about stuffs
-meta_description: "Your New Jekyll Site, Blogging about stuffs"
+name: Carto.io
+description: Hazlo fácil. Usa un mapa
+meta_description: "gis, sig, mapping, leaflet, javascript, carto, postgis, spatial, webmapping, openlayers, arcgis"
 
 markdown: redcarpet
 highlighter: pygments
 logo: false
-paginate: 15
+paginate: 10
 baseurl: /
-domain_name: 'http://yourblog-domain.com'
-google_analytics: 'UA-XXXXXXXX-X'
+domain_name: 'http://ccabanes.github.io'
+google_analytics: 'UA-68142493-1'
 
 # Details for the RSS feed generator
-url:            'blog url'
-author:         'Your Name'
+url:            'http://ccabanes.github.io'
+author:         'Carlos Cabanes'
+
+
+# Media variables
+twitter_username:     cabanescarlos
+github_username:      ccabanes
+linkedin_username:    cabanescarlos

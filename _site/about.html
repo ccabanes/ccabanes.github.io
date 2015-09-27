@@ -4,8 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Your New Jekyll Site - Blogging about stuffs</title>
-    <meta name="description" content="Your New Jekyll Site, Blogging about stuffs" />
+    <title>Carto.io - Hazlo fácil. Usa un mapa</title>
+    <meta name="description" content="gis, sig, mapping, leaflet, javascript, carto, postgis, spatial, webmapping, openlayers, arcgis" />
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="MobileOptimized" content="320" />
@@ -15,6 +15,10 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
     <!-- Customisation  -->
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
 
 </head>
 <body class="post-template page-template">
@@ -30,7 +34,7 @@
         <!-- <header class="post-header">
             <a id="blog-logo" href="/">
                 
-                    <span class="blog-title">Your New Jekyll Site</span>
+                    <span class="blog-title">Carto.io</span>
                  
             </a>
         </header> -->
@@ -38,7 +42,28 @@
         <h1 class="post-title">About me</h1>
 
         <section class="post-content">
-            <p>This is a static page. It could be an &#39;about page&#39; if you&#39;d like.</p>
+            <p>Soy Carlos Cabanes, autor principal de este blog, que pretende entre otras cosas dejar constancia de mis pequeños trabajos sobre todo en el mundo del GIS.</p>
+
+<p>Soy Ingeniero Superior en Cartografía y Geodésia y trabajo como analista programador GIS en <a href="http://www.disid.com">DISID</a>, en Valencia. Como a mi me gusta definirlo, soy un cartógrafo del siglo XXI, un cartógrafo que habla en unos y ceros y que tiene casi más que ver con la informática que con la propia cartografía.</p>
+
+<p>Tengo experiencia en varios entornos de desarrollo, pero en los últimos tiempos trabajo más en entrosnos web con Java (Spring, Hibernate, JPA, GvNIX, JS, JQuery, leaflet ... ), y por supuesto no me asustan nuevos retos.</p>
+
+<p>Creo que la información se explica mucho mejor pintándola sobre un mapa que en cualquier otro formato, y por eso este blog, para dar a conocer lo mucho que se puede explotar los datos con los mapas.</p>
+
+<div align="right">
+    <a href="https://twitter.com/cabanescarlos">
+      <i class="fa fa-twitter"></i> Twitter 
+    </a>
+    <span>&nbsp;</span>
+    <a href="https://linkedin.com/in/cabanescarlos">
+      <i class="fa fa-linkedin"></i> LinkedIn
+    </a>
+    <span>&nbsp;</span>
+    <a href="https://github.com/ccabanes">
+      <i class="fa fa-github"></i> GitHub
+    </a>
+    <span>&nbsp;</span>
+</div>
 
         </section>
 
@@ -48,7 +73,7 @@
 
     <footer class="site-footer clearfix">
       <section class="copyright">
-        <a href="/">Your New Jekyll Site</a> &copy; 
+        <a href="/">Carto.io</a> &copy; 
                &bull; All rights reserved.
       </section>
       <section class="poweredby">Made with Jekyll using 
@@ -61,18 +86,15 @@
     <script type="text/javascript" src="/assets/js/index.js"></script>
 
     <!-- Google Analytics Tracking code -->
-    <script type="text/javascript">
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
-      _gaq.push(['_trackPageview']);
+      ga('create', 'UA-68142493-1', 'auto');
+      ga('send', 'pageview');
 
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-
-    </script>   
-</body>
+    </script> 
+  </body>
 </html>
