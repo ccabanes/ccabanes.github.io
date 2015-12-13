@@ -67,7 +67,7 @@ Un sistema de referencia define la estructura geométrica para poder definir pun
 
 ###Datum
 
-Es el conjunto mínimo de parámetros que permiten definir de forma única el orige, la orientacioón y la escala de un sistema de coordenadas. Normalmente se aplica a la realizad mediante la obtención de un conjunto de coordenadas o bien mediante unos parámtros de transformación.
+Es el conjunto mínimo de parámetros que permiten definir de forma única el orige, la orientación y la escala de un sistema de coordenadas. Normalmente se aplica a la realizad mediante la obtención de un conjunto de coordenadas o bien mediante unos parámetros de transformación.
 
 ###Marco de Referencia
 
@@ -77,7 +77,7 @@ El Marco de Referencia es un cojunto de puntos con ubicación espacial respecto 
 ###Sistema de Referencia de Coordenadas (CRS)
 
 De una forma sencilla, un Sistema de Referencia de coordenadas es la suma de un sistema de coordenadas y un datum, de forma que se pueda definir de forma única un punto sobre dicho sistema. 
-Aplicado al ámbito geográfico, la posición de un punto sobre la Tierra se describe por un conjutno de coordenadas y éstas son inequívocas solo cuando el sistema de referencia de coordenadas al cual están referidas se ha definido completamente. Esto pasa por definir el Datum para dicho sistema. 
+Aplicado al ámbito geográfico, la posición de un punto sobre la Tierra se describe por un conjunto de coordenadas y éstas son inequívocas solo cuando el sistema de referencia de coordenadas al cual están referidas se ha definido completamente. Esto pasa por definir el Datum para dicho sistema. 
 
 
 [Atributos para describir un CRS (ISO 19111)](http://redgeomatica.rediris.es/traducciones/ISO_19111_Sistema_de_Referencia_MABP.pdf)
