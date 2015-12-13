@@ -26,6 +26,5 @@ Creo que la información se explica mucho mejor pintándola sobre un mapa que de
     <a href="https://github.com/{{ site.github_username }}">
       <i class="fa fa-github"></i> GitHub
     </a>
-    <span>&nbsp;</span>
 </div>
 {% endif %}
