@@ -8,15 +8,31 @@
     <title>Carto.io</title>
     <link>http://ccabanes.github.io</link>
     <description>Hazlo fácil. Usa un mapa</description>
-    <pubDate>Mon, 21 Sep 2015 22:15:00 +0200</pubDate>
+    <pubDate>Sun, 15 Nov 2015 11:18:00 +0100</pubDate>
     <item>
-      <title>Mi primer post con Jekyll!</title>
-      <link>http://ccabanes.github.io/blog/2015/09/21/mi-primer-jekyll-post.html</link>
-      <description>&lt;p&gt;aklshdg 
-akjsghd&lt;/p&gt;
+      <title>Conceptos de Cartografía I</title>
+      <link>http://ccabanes.github.io/cartography/2015/11/15/conceptos-webmapping.html</link>
+      <description>&lt;p&gt;Este es el primero de una serie de post con los que quiero empezar este blog, el cual pretendo iniciarlo desde hace ya un tiempo. 
+Hoy en día topógrafos, cartógrafos, geógrafos, agrónomos, forestales, informáticos, telecos, son solo una muestra de los profesionales que nos dedicamos al mundo del GIS. En definitiva, hacer mapas.&lt;/p&gt;
 </description>
-      <pubDate>Mon, 21 Sep 2015 22:15:00 +0200</pubDate>
-      <dc:date>2015-09-21T22:15:00+02:00</dc:date>
+      <pubDate>Sun, 15 Nov 2015 11:18:00 +0100</pubDate>
+      <dc:date>2015-11-15T11:18:00+01:00</dc:date>
+    </item>
+    <item>
+      <title>Hola que tal 4</title>
+      <link>http://ccabanes.github.io/thriller/comedy/horror/2015/11/10/hola4.html</link>
+      <description>&lt;h1&gt;Welcome to StackEdit!&lt;/h1&gt;
+</description>
+      <pubDate>Tue, 10 Nov 2015 11:18:00 +0100</pubDate>
+      <dc:date>2015-11-10T11:18:00+01:00</dc:date>
+    </item>
+    <item>
+      <title>Hola que tal 2</title>
+      <link>http://ccabanes.github.io/thriller/comedy/horror/2015/11/10/hola3.html</link>
+      <description>&lt;p&gt;asl,dnakjshdakhjsdhjkasjhdalhdajhsjh&lt;/p&gt;
+</description>
+      <pubDate>Tue, 10 Nov 2015 11:18:00 +0100</pubDate>
+      <dc:date>2015-11-10T11:18:00+01:00</dc:date>
     </item>
     <item>
       <title>Welcome to Jekyll!</title>
@@ -27,6 +43,15 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
       <pubDate>Sun, 10 Nov 2013 11:18:00 +0100</pubDate>
       <dc:date>2013-11-10T11:18:00+01:00</dc:date>
     </item>
-    <dc:date>2015-09-21T22:15:00+02:00</dc:date>
+    <item>
+      <title>Hola que tal</title>
+      <link>http://ccabanes.github.io/thriller/comedy/horror/2013/11/10/holaquetal.html</link>
+      <description>&lt;p&gt;Yd asd asd ou&amp;#39; asll asd find thisaad qds aqd a post in your &lt;code&gt;_posts&lt;/code&gt;  YEEEE! directory - edit this pdost and re-build (or run with the &lt;code&gt;-w&lt;/code&gt; switch) to see your changes!
+To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention: YYYY-MM-DD-name-of-post.ext.&lt;/p&gt;
+</description>
+      <pubDate>Sun, 10 Nov 2013 11:18:00 +0100</pubDate>
+      <dc:date>2013-11-10T11:18:00+01:00</dc:date>
+    </item>
+    <dc:date>2015-11-15T11:18:00+01:00</dc:date>
   </channel>
 </rss>

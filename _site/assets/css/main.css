@@ -2,6 +2,9 @@
 .post-excerpt p {
   display: inline; }
 
+.main-header {
+  height: 40%; }
+
 .highlight {
   background: #ffffff;
   /* Comment */
