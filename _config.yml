@@ -19,3 +19,11 @@ author:         'Carlos Cabanes'
 twitter_username:     cabanescarlos
 github_username:      ccabanes
 linkedin_username:    cabanescarlos
+
+#Bitly
+bitly:
+  username: ccabanes
+  api_key: R_0213af32c0034148ada4bc8bd25ee89c
+
+#Permalink
+permalink: pretty
