@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Crear URLs cortas con jekyll"
 date:   2015-12-17 20:36:00
 categories: "blog"
