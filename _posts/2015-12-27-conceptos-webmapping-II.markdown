@@ -27,8 +27,10 @@ También se pueden clasificar los diferentes sistemas de proyección según su t
 #####[Proyección cilíndrica][1] 
 >"Una proyección cilíndrica es una proyección cartográfica que usa un cilindro tangente.
 El cilindro es una figura geométrica que puede desarrollarse en un plano y matemáticamente es muy utilizada. La más famosa es una proyección cilíndrica modificada conocida por proyección de Mercator."
+
 ![Proyección Cilíndrica][5]  
   [5]: https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Usgs_map_mercator.svg/413px-Usgs_map_mercator.svg.png
+
 
 <iframe width="100%" height="520" frameborder="0" src="https://carcaas.cartodb.com/viz/54227eb4-ac90-11e5-aeab-0ea31932ec1d/embed_map" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
 
