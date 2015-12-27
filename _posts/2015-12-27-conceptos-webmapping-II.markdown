@@ -4,7 +4,7 @@ disqus: "true"
 title:  "Conceptos de Cartografía II"
 date:   2015-12-27 20:36:00
 categories: Cartography
-urlshort: 
+urlshort: http://bit.ly/1Pr06vp
 ---
 Este es el segundo de la serie de post sobre conceptos de cartografía. En este caso voy a hablar de qué son los sistemas de proyección cartográficos y como afectan a la representación de los elementos sobre mapas.
 
