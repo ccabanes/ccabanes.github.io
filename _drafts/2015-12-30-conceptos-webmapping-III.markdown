@@ -3,9 +3,8 @@ layout: post
 disqus: "true"
 title:  "Conceptos de Cartografía III"
 date:   2015-12-30 20:36:00
-modified: 2016-01-10
 categories: Cartography
-urlshort: 
+urlshort: http://bit.ly/1TNTmHi
 mathjax: true
 ---
 Este es el tercer post a cerca de fundamentos cartográficos. En esta entrada voy a tratar los diferentes sistemas de coordenadas.
@@ -30,6 +29,7 @@ Los sitemas se pueden clasificar en función de:
     * Coordenadas en **proyección**:
         - Sobre superficie _desarrollable_ (UTM, Lambert): **_cartesianas_**
         - Sobre superficie no desarrollable : curvilíneas
+
 
 Muchos de estos sitemas son utilizados en topografía, geodésia y astronomía. Sin embargo son muy poco frecuentes dentro del mundo del GIS. En este contexto los sistemas más comúnmente usados los sistemas curvilíneos geodésicos y los sistemas proyectados sobre superficies desarrollables (UTM). Por ello voy a entrar más en detalle con estos:
 

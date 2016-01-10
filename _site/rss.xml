@@ -8,16 +8,84 @@
     <title>Cartogramando</title>
     <link>http://ccabanes.github.io</link>
     <description>Hazlo fácil. Usa un mapa</description>
-    <pubDate>Sun, 13 Dec 2015 11:18:00 +0100</pubDate>
+    <pubDate>Wed, 30 Dec 2015 21:36:00 +0100</pubDate>
+    <item>
+      <title>Conceptos de Cartografía III</title>
+      <link>http://ccabanes.github.io/cartography/2015/12/30/conceptos-webmapping-III/</link>
+      <description>&lt;p&gt;Este es el tercer post a cerca de fundamentos cartográficos. En esta entrada voy a tratar los diferentes sistemas de coordenadas.
+Es muy común que se manejen diferentes tipos de coordenadas, sobre diferentes sistemas y en todos los casos se deben de saber manejar y usar correctamente en su respectivo contexto.&lt;/p&gt;
+</description>
+      <pubDate>Wed, 30 Dec 2015 21:36:00 +0100</pubDate>
+      <dc:date>2015-12-30T21:36:00+01:00</dc:date>
+    </item>
+    <item>
+      <title>Conceptos de Cartografía III</title>
+      <link>http://ccabanes.github.io/cartography/2015/12/30/2015-12-30-conceptos-webmapping-III/</link>
+      <description>&lt;p&gt;Este es el tercer post a cerca de fundamentos cartográficos. En esta entrada voy a tratar los diferentes sistemas de coordenadas.
+Es muy común que se manejen diferentes tipos de coordenadas, sobre diferentes sistemas y en todos los casos se deben de saber manejar y usar correctamente en su respectivo contexto.&lt;/p&gt;
+</description>
+      <pubDate>Wed, 30 Dec 2015 21:36:00 +0100</pubDate>
+      <dc:date>2015-12-30T21:36:00+01:00</dc:date>
+    </item>
+    <item>
+      <title>Conceptos de Cartografía II</title>
+      <link>http://ccabanes.github.io/cartography/2015/12/27/conceptos-webmapping-II/</link>
+      <description>&lt;p&gt;Este es el segundo de la serie de post sobre conceptos de cartografía. En este caso voy a hablar de qué son los sistemas de proyección cartográficos y como afectan a la representación de los elementos sobre mapas.&lt;/p&gt;
+</description>
+      <pubDate>Sun, 27 Dec 2015 21:36:00 +0100</pubDate>
+      <dc:date>2015-12-27T21:36:00+01:00</dc:date>
+    </item>
+    <item>
+      <title>Crear URLs cortas con jekyll</title>
+      <link>http://ccabanes.github.io/blog/2015/12/17/Crear-shortUrl-jekyll/</link>
+      <description>&lt;p&gt;Una forma sencilla de crear url cortas en un blog con jekyll es incluir una nueva variable a nivel de post que podamos evaluar dentro de la plantilla que gestiona los enlaces de las redes sociales. &lt;/p&gt;
+</description>
+      <pubDate>Thu, 17 Dec 2015 21:36:00 +0100</pubDate>
+      <dc:date>2015-12-17T21:36:00+01:00</dc:date>
+    </item>
+    <item>
+      <title>Crar URLs cortas con jekyll</title>
+      <link>http://ccabanes.github.io/2015/12/17/2015-12-17-Crear-shortUrl-jekyll/</link>
+      <description>&lt;p&gt;Una forma sencilla de crear url cortas en un blog con jekyll es incluir una nueva variable a nivel de post que podamos evaluar dentro de la plantilla que gestiona los enlaces de las redes sociales. &lt;/p&gt;
+</description>
+      <pubDate>Thu, 17 Dec 2015 21:36:00 +0100</pubDate>
+      <dc:date>2015-12-17T21:36:00+01:00</dc:date>
+    </item>
+    <item>
+      <title>Demo Draft Post</title>
+      <link>http://ccabanes.github.io/2015/12/17/demo-draft-post/</link>
+      <description>&lt;p&gt;Este es el segundo post a cerca de conceptos básicos de cartografía. Voy a tratar el tema de los sistemas de proyección un poco más a fondo de lo que se hizo en &lt;a href=&quot;%7Bsite.url%7D&quot;&gt;Conceptos de Cartografía I&lt;/a&gt;. &lt;/p&gt;
+</description>
+      <pubDate>Thu, 17 Dec 2015 19:40:25 +0100</pubDate>
+      <dc:date>2015-12-17T19:40:25.688027+01:00</dc:date>
+    </item>
+    <item>
+      <title>My draft</title>
+      <link>http://ccabanes.github.io/draft/2015/12/17/demo-draft-post/</link>
+      <description>&lt;p&gt;Este es el primero de una serie de post con los que quiero empezar este blog, el cual pretendo iniciarlo desde hace ya un tiempo. 
+Hoy en día topógrafos, cartógrafos, geógrafos, agrónomos, forestales, informáticos, telecos, son solo una muestra de los profesionales que nos dedicamos al mundo del GIS. En definitiva, hacer mapas.&lt;/p&gt;
+</description>
+      <pubDate>Thu, 17 Dec 2015 11:18:00 +0100</pubDate>
+      <dc:date>2015-12-17T11:18:00+01:00</dc:date>
+    </item>
     <item>
       <title>Conceptos de Cartografía I</title>
-      <link>http://ccabanes.github.io/cartography/2015/12/13/conceptos-webmapping.html</link>
+      <link>http://ccabanes.github.io/cartography/2015/12/13/draft/</link>
       <description>&lt;p&gt;Este es el primero de una serie de post con los que quiero empezar este blog, el cual pretendo iniciarlo desde hace ya un tiempo. 
 Hoy en día topógrafos, cartógrafos, geógrafos, agrónomos, forestales, informáticos, telecos, son solo una muestra de los profesionales que nos dedicamos al mundo del GIS. En definitiva, hacer mapas.&lt;/p&gt;
 </description>
       <pubDate>Sun, 13 Dec 2015 11:18:00 +0100</pubDate>
       <dc:date>2015-12-13T11:18:00+01:00</dc:date>
     </item>
-    <dc:date>2015-12-13T11:18:00+01:00</dc:date>
+    <item>
+      <title>Conceptos de Cartografía I</title>
+      <link>http://ccabanes.github.io/cartography/2015/12/13/conceptos-webmapping/</link>
+      <description>&lt;p&gt;Este es el primero de una serie de post con los que quiero empezar este blog, el cual pretendo iniciarlo desde hace ya un tiempo. 
+Hoy en día topógrafos, cartógrafos, geógrafos, agrónomos, forestales, informáticos, telecos, son solo una muestra de los profesionales que nos dedicamos al mundo del GIS. En definitiva, hacer mapas.&lt;/p&gt;
+</description>
+      <pubDate>Sun, 13 Dec 2015 11:18:00 +0100</pubDate>
+      <dc:date>2015-12-13T11:18:00+01:00</dc:date>
+    </item>
+    <dc:date>2015-12-30T21:36:00+01:00</dc:date>
   </channel>
 </rss>
