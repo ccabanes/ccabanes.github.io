@@ -5,7 +5,7 @@ title:  "Conceptos de Cartografía III"
 date:   2015-12-30 20:36:00
 modified: 2016-01-10
 categories: Cartography
-urlshort: 
+urlshort: http://bit.ly/1TNTmHi 
 mathjax: true
 ---
 Este es el tercer post a cerca de fundamentos cartográficos. En esta entrada voy a tratar los diferentes sistemas de coordenadas.
