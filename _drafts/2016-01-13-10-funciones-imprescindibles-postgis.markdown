@@ -11,14 +11,24 @@ El uso de un sistema de gestión de base de datos con soporte geospacial es fund
 
 Si por contra no sabes que es esto de Postgis entra (aquí)[http://postgis.net] y échale un vistazo antes de seguir leyendo.
 
-####St_AsText
-Esta función devuelve de en formato WKT la geometría que se pasa por parámetro.
--- codigo de demo
+Aquí dejo el enlace al manual completo de Postgis 2.2 en (PDF)[http://postgis.net/stuff/postgis-2.2.pdf] y un enlace a un (curso de inciación a Postgis)[http://workshops.boundlessgeo.com/postgis-intro/]
 
-####St_AsEWKT
-Similar a la función St_AsText pero esta incluye también el SRID de la geometría pasada por parámetro.
--- codigo de demo
+####St_AsText - St_AsEWKT 
+Ambas funciones obtienen la geometría en formato WKT. La diferencia es que la segunda incluye el SRID de la misma.
+######Sintaxis
+text *ST_AsText* ( *geometry* g1);
+text *ST_AsEWKT* ( *geometry* g1);
+```sql
+select St_AsText(the_geom) from  myTable;
+select St_AsTEWKT(the_geom) from  myTable;
+```
 
+####ST_GeomFromText - ST_GeomFromEWKT
+En este caso estas funciones generan una geometría en función a las cadenas en formato WKT o EWKT respectivamente.
+######Sintaxis
+geometry *ST_GeomFromText*(text WKT);
+geometry *ST_GeomFromText*(text WKT, integer srid);
+geometry *ST_GeomFromEWKT*(text EWKT);
 ####St_Buffer
 Una de las funciones más utilizadas en los sistemas de información geográfica. Esta función genera un polígono alrededor de la geometría pasada por parámetro. Dicho polígono puede definirse según los parámetros adicionales de la función
 -- codigo de demo
