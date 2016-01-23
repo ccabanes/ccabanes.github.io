@@ -4,7 +4,7 @@ disqus: "true"
 title:  "10 funciones Postgis que debes conocer"
 date:   2016-01-23 20:36:00
 categories: "Cartography postgis bbdd"
-urlshort: http://bit.ly/1QqPr4n
+urlshort: http://bit.ly/1ZIU2Qf
 mathjax: false
 ---
 El uso de un sistema de gestión de base de datos con soporte geospacial es fundamental para cualquier entorno GIS en todos los niveles. Este post tiene como propósito recopilar las funciones que bajo mi criterio son más utilizadas (o al menos son la que más utilizo) y por lo tanto, es altamente recomendable que cualquier gestor de información geográfica deba saber.
