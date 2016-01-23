@@ -1,0 +1,1 @@
+Personal Blog site. Speaking about mapping and GIS
