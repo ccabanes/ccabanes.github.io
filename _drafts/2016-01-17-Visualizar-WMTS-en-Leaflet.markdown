@@ -3,15 +3,16 @@ layout: mapPost
 disqus: "true"
 title:  "Visualizar WMTS en Leaflet"
 date:   2016-01-17 20:36:00
-categories: "WMTS, webservices, webmapping, GIS, leaflet, OGC"
+categories: "WMTS webservices webmapping GIS leaflet OGC"
 urlshort: 
-mathjax: false
+mathjax: true
 mapa: "true"
 urlmapa : cantabria.html
 mapTitle : Demo WMTS con leaflet.js en CRS:25830
 ---
 
 El uso de servicios de cartografía base está ampliamente extendido en el uso de aplicaciones de webmapping. Los más conocidos por ser los primeros en llegar fueron los servicios WMS. Esta popularidad está fuertemente ligada a la cantidad de usuarios que hacen uso del mismo, lo que genera una nueva necesidad: **eficiencia en cuanto a la agilidad de la respuesta de los servicios, costes computacionales, etc.**
+
 Bajo estas premisas nace el servicio OGC WMTS que lo que pretende es mejorar la calidad del servicio haciéndolo más rápido y eficaz. La pregunta es:
 
 Y como mejoramos el servicio WMS? 
@@ -20,20 +21,47 @@ Básicamente la mejora que implementa el servicio WMTS respecto a WMS es que las
 En cuanto a las alternativas para implementar el servicio, los más populares son **[Mapproxy](http://mapproxy.org/)**, **[GeoWebCache](http://geowebcache.org/)**, **[TileCache](http://tilecache.org/)**.
 
 
-###Principios del servicio WMTS
+##Principios del servicio WMTS
 Es muy recomendable que antes de continuar, se lea la documentación de la especificación del servicio ([aquí](http://www.opengeospatial.org/standards/wmts#downloads)). Como en este post nos vamos a centrar en el consumo del servicio, te recomiendo que leas el capítulo _6 WMTS overview_ y el _anexo E_.
 
 ####Fundamento general
-El fundamento general en el que se basa el servicio WMTS es el almacenamiento de las imágenes ya generadas y cacheadas. La gestión de la información se hace teniendo en cuenta la escala o zoom a la que se encuentra el usuario y en función de una matriz, que divide las diferentes teselas.
-
-![TileMatrixSet]({{ site.url }}/assets/images/uploads/wmts/tilematrixset.png)
-
-De esta forma, para cada nivel de zoom se tendrá almacenado las teselas. A menor denominador de escala, mayor número de teselas y viceversa.
+El fundamento general en el que se basa el servicio WMTS es que la información del servicio se encuentra previamente generada (cacheada) y la gestión de la información se realiza mediante matrices y conjuntos de matrices que, según el CRS sobre el que está definida la información, es capaz de identificar, obtener y servir la información requerida.
 
 ####TileMatrixSet
 
+El TileaMatrixSet es un conjunto de matrices de imágenes (teselas), cada una de ellas con una resolución determinada (zoom o escala), que es la base de la ordenación de las teselas del servicio.
 
+>El servicio WMTS normaliza los dpi de las teselas para que el pixel tenga una dimesión de 0.28 mm
+
+![TileMatrixSet]({{ site.url }}/assets/images/uploads/wmts/tilematrixset.png)
+
+Para cada resolución de dicho TileMatrixSet está definido un TileMatrix.
 
 ####TileMatrix
+Para cada resolución existe una matriz de teselas o TileMatrix, que tiene como orgigen la esquina superior izquierda, y que contiene las diferentes _TileCol_ y _TileRow_, que son parámetros necesarios en las peticiones del servicio.
+
+>Por defecto, si no se indica lo contrario, las dimensiones de cada una de las teselas es de 256x256 
 
 ![TileMatrix]({{ site.url }}/assets/images/uploads/wmts/tileMatrix.png)
+
+En función de estas premisas, el usuario puede calcular la posición de cualquier telesa en dicha matriz teniendo en cuenta la resolución y la posición en el eje X e Y de respecto a la posición origen de la matriz.
+
+Por ejemplo:
+
+$$pixelSpan = {scaleDenominator * 0.0028\over metersPerUnit(CRS)}$$
+$$tileSpan = tileWidth * pixelSpan$$
+$$tileSpanY = tileHeight * pixelSpan$$
+$$tileMatrixMaxX = tileMatrixMinX + tileSpanX * matrixWidth$$
+$$tileMatrixMinY = tileMatrixMaxY - tileSpanY * matrixHeight$$
+
+
+###Escalas conocidas (Well-known scale sets)
+Dentro de la especificación en el **Anexo E** indica el comportamiento que deben de tener algunos sistemas de referencia globales como el **WGS84** o **GoogleMapsCompatible**.
+Para estos sistemas globales la especificación indica cuales tienen que ser los denominadores de escalas para los diferentes niveles de zoom así como las resoluciones para cada una de ellas.
+
+En las imágenes siguientes se puede comprobar como los datos del GetCapbilities del servicio coindicen con la tabla del anexo E de la definición de la especificación.
+![GoogleMapsCompatible Scales]({{ site.url }}/assets/images/uploads/wmts/googleMapsCompatible_Escales.png)
+
+![WMTS Capabilities 3857 Scales]({{ site.url }}/assets/images/uploads/wmts/capabilities_3857_TileMatrix.png)
+
+## Cosumo de servicio WMTS con leaflet JS
