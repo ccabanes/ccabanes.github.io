@@ -1,14 +1,11 @@
 ---
 layout: mapPost
 disqus: "true"
-title:  "Visualizar WMTS en Leaflet"
-date:   2016-01-17 20:36:00
-categories: "WMTS webservices webmapping GIS leaflet OGC"
+title:  "Servicios WMTS"
+date:   2017-02-08 20:36:00
+categories: "WMTS webservices webmapping GIS OGC"
 urlshort: 
 mathjax: true
-mapa: "true"
-urlmapa : cantabria.html
-mapTitle : Demo WMTS con leaflet.js en CRS:25830
 ---
 
 El uso de servicios de cartografía base está ampliamente extendido en el uso de aplicaciones de webmapping. Los más conocidos por ser los primeros en llegar fueron los servicios WMS. Esta popularidad está fuertemente ligada a la cantidad de usuarios que hacen uso del mismo, lo que genera una nueva necesidad: **eficiencia en cuanto a la agilidad de la respuesta de los servicios, costes computacionales, etc.**
