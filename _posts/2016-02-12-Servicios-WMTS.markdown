@@ -2,11 +2,10 @@
 layout: post
 disqus: "true"
 title:  "Servicios WMTS"
-date:   2017-12-12 09:33:00
+date:   2016-02-12 09:33:00
 categories: "WMTS webservices webmapping GIS OGC"
 urlshort: 
 mathjax: true
-urlshort: 
 ---
 
 El uso de servicios de cartografía base está ampliamente extendido en el uso de aplicaciones de webmapping. Los más conocidos por ser los primeros en llegar fueron los servicios WMS. Esta popularidad está fuertemente ligada a la cantidad de usuarios que hacen uso del mismo, lo que genera una nueva necesidad: **eficiencia en cuanto a la agilidad de la respuesta de los servicios, costes computacionales, etc.**
