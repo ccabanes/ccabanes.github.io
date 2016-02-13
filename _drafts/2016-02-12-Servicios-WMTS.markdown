@@ -1,11 +1,12 @@
 ---
-layout: mapPost
+layout: post
 disqus: "true"
 title:  "Servicios WMTS"
-date:   2017-02-08 20:36:00
+date:   2017-12-12 09:33:00
 categories: "WMTS webservices webmapping GIS OGC"
 urlshort: 
 mathjax: true
+urlshort: 
 ---
 
 El uso de servicios de cartografía base está ampliamente extendido en el uso de aplicaciones de webmapping. Los más conocidos por ser los primeros en llegar fueron los servicios WMS. Esta popularidad está fuertemente ligada a la cantidad de usuarios que hacen uso del mismo, lo que genera una nueva necesidad: **eficiencia en cuanto a la agilidad de la respuesta de los servicios, costes computacionales, etc.**
@@ -22,7 +23,7 @@ En cuanto a las alternativas para implementar el servicio, los más populares so
 Es muy recomendable que antes de continuar, se lea la documentación de la especificación del servicio ([aquí](http://www.opengeospatial.org/standards/wmts#downloads)). Como en este post nos vamos a centrar en el consumo del servicio, te recomiendo que leas el capítulo _6 WMTS overview_ y el _anexo E_.
 
 ####Fundamento general
-El fundamento general en el que se basa el servicio WMTS es que la información del servicio se encuentra previamente generada (cacheada) y la gestión de la información se realiza mediante matrices y conjuntos de matrices que, según el CRS sobre el que está definida la información, es capaz de identificar, obtener y servir la información requerida.
+El fundamento general en el que se basa el servicio WMTS es que la información del servicio se encuentra previamente generada (cacheada) y la gestión de la información se realiza mediante matrices y conjuntos de matrices que, según el CRS y las características de la matriz , el usuario es capaz de identificar, pedir y obtener la información requerida.
 
 ####TileMatrixSet
 
@@ -35,21 +36,25 @@ El TileaMatrixSet es un conjunto de matrices de imágenes (teselas), cada una de
 Para cada resolución de dicho TileMatrixSet está definido un TileMatrix.
 
 ####TileMatrix
-Para cada resolución existe una matriz de teselas o TileMatrix, que tiene como orgigen la esquina superior izquierda, y que contiene las diferentes _TileCol_ y _TileRow_, que son parámetros necesarios en las peticiones del servicio.
+Las TileMatrix son cada una de las matrices de imágenes que forman el TileMatrixSet. Para cada resolución existe una matriz de teselas o TileMatrix, que tiene como orgigen la esquina superior izquierda, y que contiene las correspondientes filas y columnas (_TileCol_ y _TileRow_), que son parámetros necesarios en las peticiones del servicio.
 
 >Por defecto, si no se indica lo contrario, las dimensiones de cada una de las teselas es de 256x256 
 
 ![TileMatrix]({{ site.url }}/assets/images/uploads/wmts/tileMatrix.png)
 
-En función de estas premisas, el usuario puede calcular la posición de cualquier telesa en dicha matriz teniendo en cuenta la resolución y la posición en el eje X e Y de respecto a la posición origen de la matriz.
+En función de estos componentes, el usuario puede calcular la posición de cualquier telesa en dicha matriz teniendo en cuenta la resolución y la posición sobre eje X e Y respecto a la posición origen de la matriz.
 
 Por ejemplo:
 
 $$pixelSpan = {scaleDenominator * 0.0028\over metersPerUnit(CRS)}$$
+
 $$tileSpan = tileWidth * pixelSpan$$
+
 $$tileSpanY = tileHeight * pixelSpan$$
+
 $$tileMatrixMaxX = tileMatrixMinX + tileSpanX * matrixWidth$$
-$$tileMatrixMinY = tileMatrixMaxY - tileSpanY * matrixHeight$$
+
+$${tileMatrixMinY = tileMatrixMaxY - tileSpanY * matrixHeight}$$
 
 
 ###Escalas conocidas (Well-known scale sets)
