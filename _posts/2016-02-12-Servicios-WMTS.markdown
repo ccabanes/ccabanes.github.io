@@ -4,7 +4,7 @@ disqus: "true"
 title:  "Servicios WMTS"
 date:   2016-02-12 09:33:00
 categories: "WMTS webservices webmapping GIS OGC"
-urlshort: 
+urlshort: http://bit.ly/1Qy0Zib 
 mathjax: true
 ---
 
