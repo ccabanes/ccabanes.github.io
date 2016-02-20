@@ -17,7 +17,15 @@
 		continuousWorld: true,
 		worldCopyJump: false, 
 		scale: cantabria_scale
-	}).setView([43.421936, -3.781941], 7);
+	}).setView([43.421936, -3.781941], 5);
+
+		var pnoa25830_layer  = new L.TileLayer('http://www.ign.es/wmts/pnoa-ma?service=WMTS&request=GetTile&version=1.0.0&layer=OI.OrthoimageCoverage&style=default&tilematrixset=EPSG:25830&format=image%2Fpng&height=256&width=256&TileMatrix={z}&TileRow={y}&TileCol={x}', {
+		continuousWorld: true,
+		attribution: '&copy; <a href="http://www.disid.com/">DISID</a> PNOA, WMTS',
+	});
+
+
+
 	var can_orto_Url_WMTS = 'http://geoservicios.cantabria.es/inspire/rest/services/Ortofoto_2014/MapServer/WMTS?service=WMTS&request=GetTile&version=1.0.0&layer=Ortofoto_2014&style=default&tilematrixset=default028mm&TileMatrix={z}&TileRow={y}&TileCol={x}',
 	attrib = 'Ortofoto 2014 OGC WMTS',
 	Orto2014_Layer = new L.TileLayer(can_orto_Url_WMTS, {
