@@ -1,0 +1,1 @@
+This is a personal blog. You can read it if you want and or if you are interested in GIS and web mapping
