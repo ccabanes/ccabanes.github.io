@@ -2,7 +2,7 @@
 layout: mapPost
 disqus: "true"
 title:  "Visualizar WMTS en Leaflet"
-date:   2017-02-20 10:09:00
+date:   2016-02-20 10:09:00
 categories: "WMTS webservices webmapping GIS leaflet OGC"
 urlshort: 
 mathjax: false
