@@ -8,7 +8,7 @@ mathjax: false
 mapa: "true"
 urlmapa : cantabria.html
 mapTitle : Demo WMTS Cantabria
-urlshort: 
+urlshort: http://bit.ly/1QqLzly
 ---
 
 Este es un segundo post sobre los servicios WMTS. Si quieres saber que se dijo en el primero, [aquí](http://ccabanes.github.io/wmts/webservices/webmapping/gis/ogc/2016/02/12/Servicios-WMTS/) tienes el enlace.
