@@ -4,7 +4,7 @@ disqus: "true"
 title:  "Aplicar caché en Spring"
 date:   2016-03-05
 categories: "java Spring cache"
-urlshort: 
+urlshort: http://bit.ly/1nmZhbx
 ---
 
 Desde hace ya unas versiones [Spring](https://spring.io/) facilita el uso de la caché de forma fácil para el desarrollador. Mediante la anotación @Cacheable se puede aplicar caché a cualquier método que se quiera dentro de una aplicación spring.
