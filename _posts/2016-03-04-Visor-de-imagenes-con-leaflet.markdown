@@ -7,7 +7,7 @@ categories: "leaflet"
 mathjax: false
 mapa: "true"
 urlmapa : imagenLeaflet.html
-mapTitle : Visualicación de imagen en Leaflet.js 
+mapTitle : Visualización de imagen en Leaflet.js 
 urlshort: http://bit.ly/24HANvH
 ---
 
