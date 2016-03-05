@@ -4,10 +4,6 @@ disqus: "true"
 title:  "Aplicar caché en Spring"
 date:   2016-03-05
 categories: "java Spring cache"
-mathjax: false
-mapa: "false"
-urlmapa : 
-mapTitle : 
 urlshort: 
 ---
 
