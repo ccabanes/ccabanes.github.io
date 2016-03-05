@@ -2,7 +2,7 @@
 layout: post
 disqus: "true"
 title:  "Aplicar caché en Spring"
-date:   2016-03-05 11:00:00
+date:   2016-03-05
 categories: "java Spring cache"
 mathjax: false
 mapa: "true"
