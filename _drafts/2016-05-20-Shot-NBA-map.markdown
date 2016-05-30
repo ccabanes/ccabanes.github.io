@@ -6,7 +6,7 @@ date:   2016-05-20 11:00:00 -0000
 categories: "map Leaflet lodash dataviz nba"
 mathjax: false
 mapa: "true"
-urlmapa : 
+urlmapa :  
 mapTitle : 
 urlshort: 
 ---
@@ -22,11 +22,11 @@ Es ampliamente conocido que la NBA es una de las competiciones deportivas que m�
 Con el estudio de estos datos se pueden sacar conclusiones que, a veces, no son sencillas de medir dentro de una cancha. Este es el motivo por el cual es cada vez más frecuente el lanzamiento de 3 puntos ya que con los porcentages de tiro actual sale más rentable que lanzar de 2 puntos, sobre todo cuando no se está cerca de la canasta.
 
 ### Dataviz: Lanzamientos temporada 2015-2016 Stephen Curry
-"Hazlo fácil. Usa un mapa" es el título de mi blog. Creo que para este caso un mapa es la forma más fácil de representar y entender lo que sucede en una cancha. 
+"Hazlo fácil. Usa un mapa" es el título de este blog. Creo que para este caso un mapa es la forma más fácil de representar y entender lo que sucede en una cancha. 
 
 En este post se va a plasmar en un mapa los lanzamientos hechos por Stephen Curry durante la temporada regular 2015-2016.
 
-Para ello es necesario saber como pedir la información. A pesar de que la NBA no tiene un API pública de acceso de datos, hoy en día los frameworks JS hacen que cada vez más nos saltemos nuestro servidor de aplicaciones para atacar directametne al proveedor de datos.
+Para ello es necesario saber como pedir la información. A pesar de que la NBA no tiene un API pública de acceso de datos, hoy en día los frameworks JS hacen que cada vez más nos saltemos nuestro servidor de aplicaciones para atacar directamente al proveedor de datos.
 
 Depurando un poco las peticiones que se hacen desde la página [stats.nba.com](http://stats.nba.com/), se puede sacar de forma fácil qué peticiones se están ejecutando para obtener ciertos datos.
 
@@ -36,7 +36,7 @@ Para implementar este ejemplo y poder obtener los lanzamientos, la petición ser
 http://stats.nba.com/stats/shotchartdetail?CFID=33&CFPARAMS=2015-16&ContextFilter=&ContextMeasure=FGA&DateFrom=&DateTo=&GameID=&GameSegment=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PaceAdjust=N&PerMode=PerGame&Period=0&PlayerID=201939&PlusMinus=N&Position=&Rank=N&RookieYear=&Season=2015-16&SeasonSegment=&SeasonType=Regular%20Season&TeamID=0&VsConference=&VsDivision=&mode=Advanced&showDetails=0&showShots=1&showZones=0
 ```
 
-Como no la respuesta no varía (ya ha pasado la temporada regular), me he guardado en un fichero la respuesta para así dejar tranquilos los servidores de la nba ;). Esta es la respuesta del servicio: [CurryData](https://github.com/ccabanes/ccabanes.github.io/blob/master/assets/data/curry.js) en formato JSON.
+Como no la respuesta no varía (ya ha pasado la temporada regular), me he guardado en un fichero la respuesta para así dejar tranquilos los servidores de la nba ;) . Esta es la respuesta del servicio: [CurryData](https://github.com/ccabanes/ccabanes.github.io/blob/master/assets/data/curry.js) en formato JSON.
 
 Ahora solo falta procesar los datos y extrar la información que se quiera para pintarla en un mapa. 
 En este ejemplo, se van a visualizar simplemente los lanzamientos y su criterio de pintado será:
@@ -86,7 +86,7 @@ Estos son las cabeceras de los datos:
 "SHOT_MADE_FLAG"
 ```
 
-Para este ejemplo sencillo bastará con evaluar el campo "SHOT_MADE_FLAG" para saber si el lanzamiento ha sido convertido, y los campos "LOC_X" y "LOC_Y" para mostrar desde dónde se ha efectuado el mismo.
+Para este ejemplo sencillo bastará con evaluar el campo ```SHOT_MADE_FLAG```: para saber si el lanzamiento ha sido convertido, y los campos ```LOC_X``` y ```LOC_Y``` para mostrar desde dónde se ha efectuado el mismo.
 
 Llegado a este punto y en vista del volumen de datos (en torno a los 1600 elementos) decidí probar una librería para optimizar al máximo el manejo de colecciones de datos en JS llamada [lodash](https://lodash.com/). 
 
@@ -111,7 +111,7 @@ Con **lodash** se puede incluir iteraciones e índices como en el siguiente ejem
 
 
 #### Y que CRS se aplica al mapa?
-Esta es una pregunta fundamental. Como definir el sistema de referencia para el mapa? En este caso, puesto que los datos vienen en un sistema cartesiano normal y corriente (eje X, Y), se ha definido un **CRS Simple** con el centro en **(0,0)** _([Otro ejemplo de CRS Simple aquí](http://ccabanes.github.io/leaflet/2016/03/05/Visor-de-imagenes-con-leaflet/))_
+Esta es una pregunta fundamental. Cómo definir el sistema de referencia para el mapa? En este caso, puesto que los datos vienen en un sistema cartesiano normal y corriente (eje X, Y), se ha definido un **CRS Simple** con el centro en **(0,0)** _([Otro ejemplo de CRS Simple aquí](http://ccabanes.github.io/leaflet/2016/03/05/Visor-de-imagenes-con-leaflet/))_
 
 
 Aquí hay una **[DEMO](http://ccabanes.github.io/map-demos/nba/nba.html)** para ver el resultado final.
