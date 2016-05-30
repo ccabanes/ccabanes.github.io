@@ -8,7 +8,7 @@ mathjax: false
 mapa: "true"
 urlmapa :  
 mapTitle : 
-urlshort: 
+urlshort: http://bit.ly/1WtWfln
 ---
 
 Coincidiendo con los playoffs 2016, y recordando algún post leído hace unos meses, se me ocurrió la idea de intentar plasmar mediante un mapa en [LeafletJS](http://leafletjs.com/) información a cerca de los partidos o jugadores de la NBA.
