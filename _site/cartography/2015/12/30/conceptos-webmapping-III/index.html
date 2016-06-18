@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Cartogramando - Hazlo fácil. Usa un mapa</title>
+    <meta name="description" content="gis, sig, mapping, leaflet, javascript, carto, postgis, spatial, webmapping, openlayers, arcgis" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <!-- Customisation  -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']]},
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: false
+    }
+    );
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+</head>
+
+<body class="post-template">
+    <header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="/">Home</a>
+        <a class="subscribe-button icon" href="http://ccabanes.github.io/about">About me</a>
+        <a class="subscribe-button icon-feed" href="/rss.xml">Subscribe</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post">
+        <header class="post-header">
+            <h1 class="post-title">Conceptos de Cartografía III</h1>
+            <section class="post-meta">                
+                <time class="post-date" datetime="2015-12-30">30 Dec 2015</time>
+                 
+                    on cartography 
+                
+            </section>
+        </header>
+
+    <!-- <header class="post-header">
+            <a id="blog-logo" href="http://ccabanes.github.io">
+                
+                    <span class="blog-title">Cartogramando</span>
+                 
+            </a>
+        </header> -->
+        
+        <!-- <span class="post-meta">
+            <time datetime="2015-12-30">30 Dec 2015</time>
+             
+                on cartography 
+            
+        </span> -->
+
+        <!-- <h1 class="post-title">Conceptos de Cartografía III</h1> -->
+
+        <section class="post-content">
+            <p>Este es el tercer post a cerca de fundamentos cartográficos. En esta entrada voy a tratar los diferentes sistemas de coordenadas.
+Es muy común que se manejen diferentes tipos de coordenadas, sobre diferentes sistemas y en todos los casos se deben de saber manejar y usar correctamente en su respectivo contexto.</p>
+
+<p>El fundamento inicial de cualquier sistema de coordenadas es permitir la definición de un objeto en el espacio. Desde un punto de vista matemático cualquier sistema sería admisible para ello. Sin embargo, para usos cartográficos utilizamos los que describen de forma más sencilla y práctica un objeto. </p>
+
+<p>Los sitemas se pueden clasificar en función de:</p>
+
+<ul>
+<li><strong>La situación de su origen</strong>
+
+<ul>
+<li>Sistemas <strong>topocéntricos</strong>: origen en un punto en la superficie terrestre.</li>
+<li>Sistemas <strong>geocéntricos</strong>: origen en centro de masas terrestre.</li>
+</ul></li>
+<li><strong>El tipo de coordenadas</strong>
+
+<ul>
+<li>Coordenadas <strong>carterianas</strong>:
+
+<ul>
+<li>Geocéntricas ($X,Y,Z$)</li>
+<li>Locales ($x,y,z$)</li>
+</ul></li>
+<li>Coordenadas <strong>curvilíneas</strong>:
+
+<ul>
+<li>Polares </li>
+<li>Esféricas</li>
+<li><em>Geodésicas o geográficas</em></li>
+<li>Astronómicas</li>
+</ul></li>
+<li>Coordenadas en <strong>proyección</strong>:
+
+<ul>
+<li>Sobre superficie <em>desarrollable</em> (UTM, Lambert): <strong><em>cartesianas</em></strong></li>
+<li>Sobre superficie no desarrollable : curvilíneas</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>Muchos de estos sitemas son utilizados en topografía, geodésia y astronomía. Sin embargo son muy poco frecuentes dentro del mundo del GIS. En este contexto los sistemas más comúnmente usados los sistemas curvilíneos geodésicos y los sistemas proyectados sobre superficies desarrollables (UTM). Por ello voy a entrar más en detalle con estos:</p>
+
+<h4>Coordenadas Geodésicas (geográficas)</h4>
+
+<p>Como se ha comentado en entradas anteriores de esta serie, la inmensa mayoría de sistemas de referencia tienen como base un elipsoide de revolución. El utilizar un elipsoide de referencia implica que para un punto P sobre la superficie se corresponde una proyección P&#39; sobre el elipsoide, y a su vez la posición de ese punto mediante dos coordenadas correspondientes a la parametrización de la superficie del elipsoide ($φ,$λ).</p>
+
+<ul>
+<li><p><em>Latitud ($φ$</em>): Ángulo medido en el plano meridiano que forman la normal al elipsoide en el punto P y el plano del ecuador. Los valores se encuentran entre $π/2 &lt; φ &lt; π/2$</p></li>
+<li><p><em>Longitud ($λ$</em>): Ángulo medido en el plano del ecuador que forman el plano meridiano que contiene al punto P y el plano meridiano de Greenwich. Los valores se encuentran entre $-π &lt; φ &lt; π$</p></li>
+</ul>
+
+<p><img src="http://ccabanes.github.io/assets/images/uploads/conceptos-webmapping-III/elipsoide.jpg" alt="Elipsoide de Referencia"></p>
+
+<h4>Coordenadas proyectadas (UTM)</h4>
+
+<p>En cartografía se emplean las proyecciones para representar en un plano (2D) la situación de puntos sobre la Tierra (3D). Para poder realizar esta labor se utilizan las proyecciones cartográficas (<a href="http://ccabanes.github.io/cartography/2015/12/27/conceptos-webmapping-II/">+info</a>). Una de las más utilizadas en la proyección UTM. Esta proyeción lo que hace es asignar a cada punto de coordenadas ($φ,$λ) unas coordenadas carterianas ($x,$y) sobre un plano, siguiendo unas determinadas condiciones de conformidad. Ver definición completa en la <a href="https://es.wikipedia.org/wiki/Sistema_de_coordenadas_universal_transversal_de_Mercator">Wikipedia</a></p>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Utm-zones.jpg/700px-Utm-zones.jpg" alt="Proyección UTM"></p>
+
+<ul>
+<li><p><strong>Características de la proyección UTM</strong></p>
+
+<p>La división de la tierra  por sus meridianos y pararlelos hace que se genere una &quot;malla&quot; o &quot;rejilla&quot;. Esta malla sienta la base para definir el concepto de <em>Huso</em>, que son todas aquellas posiciones geográficas que ocupan los puntos entre dos meridianos. Cada uno de ellos será de $6^0$.
+Además esto nos lleva a otro concepto que es el <em>meridiano central del huso</em>. Este es el punto donde el cilindro es tangente a la esfera con lo que los puntos que se sitúen sobre este meridiano no tendrán deformación alguna al proyectarse. Sobre esta línea, el módulo de deformación lineal $K$ es 1, aumentando linealmente conforme nos alejamos del mismo.</p></li>
+</ul>
+
+        </section>
+
+        
+
+        <footer class="post-footer">
+            <!-- If we want to display author's name and bio -->
+            
+                <figure class="author-image">
+                    <a class="img" href="/" style="background-image: url(/assets/images/profile.png)">
+                    <span class="hidden">Carlos Cabanes's Picture</span></a>
+                </figure>
+                <section class="author">
+                    <!-- Author Name -->
+                    <h4> Carlos Cabanes </h4>
+                    <!-- Author Bio -->
+                    <p> 
+                        Cartógrafo. Analista GIS. Cartogramador.
+                    </p>
+                </section>                
+            
+
+            <!-- Share links section -->
+            <section class="share">
+    <h4>Share this post</h4>
+    
+    	
+    	    
+    <a class="icon-twitter" href="http://twitter.com/share?text=Conceptos de Cartografía III&amp;url=http://bit.ly/1TNTmHi"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://bit.ly/1TNTmHi"
+        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://bit.ly/1TNTmHi"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+            
+            <!-- Disqus comments -->
+            
+                <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+
+        var disqus_shortname = 'ccabanes'; 
+        var disqus_developer =1 ; // developer mode is on
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+            
+            
+        </footer>
+
+    </article>
+
+</main>
+    <footer class="site-footer clearfix">
+      <section class="copyright">
+        <a href="/">Cartogramando</a> &copy; 
+               &bull; All rights reserved.
+      </section>
+      <section class="poweredby">Made with Jekyll using 
+        <a href="http://github.com/rosario/kasper">Kasper theme</a>
+      </section>
+    </footer>
+    
+    <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Google Analytics Tracking code -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-68142493-1', 'auto');
+      ga('send', 'pageview');
+    </script> 
+  </body>
+</html>

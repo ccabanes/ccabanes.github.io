@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Cartogramando - Hazlo fácil. Usa un mapa</title>
+    <meta name="description" content="gis, sig, mapping, leaflet, javascript, carto, postgis, spatial, webmapping, openlayers, arcgis" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <!-- Customisation  -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']]},
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: false
+    }
+    );
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+</head>
+
+<body class="post-template">
+    <header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="/">Home</a>
+        <a class="subscribe-button icon" href="http://ccabanes.github.io/about">About me</a>
+        <a class="subscribe-button icon-feed" href="/rss.xml">Subscribe</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post">
+        <header class="post-header">
+            <h1 class="post-title">Datos NBA en un mapa web. Lanzamientos de Stephen Curry</h1>
+            <section class="post-meta">                
+                <time class="post-date" datetime="2016-05-20">20 May 2016</time>
+                 
+                    on map, leaflet, lodash, dataviz, and nba 
+                
+            </section>
+        </header>
+
+    <!-- <header class="post-header">
+            <a id="blog-logo" href="http://ccabanes.github.io">
+                
+                    <span class="blog-title">Cartogramando</span>
+                 
+            </a>
+        </header> -->
+        
+        <!-- <span class="post-meta">
+            <time datetime="2016-05-20">20 May 2016</time>
+             
+                on map, leaflet, lodash, dataviz, and nba 
+            
+        </span> -->
+
+        <!-- <h1 class="post-title">Datos NBA en un mapa web. Lanzamientos de Stephen Curry</h1> -->
+
+        <section class="post-content">
+            <p>Coincidiendo con los playoffs 2016, y recordando algún post leído hace unos meses, se me ocurrió la idea de intentar plasmar mediante un mapa en <a href="http://leafletjs.com/">LeafletJS</a> información a cerca de los partidos o jugadores de la NBA.</p>
+
+<p>Es ampliamente conocido que la NBA es una de las competiciones deportivas que más y mejor datos generan y manejan. Un buen ejemplo son lo que llaman <a href="http://stats.nba.com/#!?StatType=Advanced">estadísticas avanzadas</a> , que no es más que la aplicación de Bisness Intelligence a los datos producidos por los jugadores y equipos. Con esto se genera información como:</p>
+
+<ul>
+<li><strong>Offensive Rating</strong> <em>(Ratio ofensivo)</em>: Número de puntos anotados por cada 100 posesiones por un equipo/jugador. </li>
+<li><strong>Deffensive Rating</strong> <em>(Ratio defensivo)</em>: Número de puntos recibidos por cada 100 posesiones de un equipo/jugador.</li>
+<li><strong>Player Impact Estimated</strong> <em>(Impacto de un jugador)</em>: Refleja la participación que tiene un jugador en las acciones de su equipo, medido en %.</li>
+</ul>
+
+<p>Con el estudio de estos datos se pueden sacar conclusiones que, a veces, no son sencillas de medir dentro de una cancha. Este es el motivo por el cual es cada vez más frecuente el lanzamiento de 3 puntos ya que con los porcentages de tiro actual sale más rentable que lanzar de 2 puntos, sobre todo cuando no se está cerca de la canasta.</p>
+
+<h3>Dataviz: Lanzamientos temporada 2015-2016 Stephen Curry</h3>
+
+<p>&quot;Hazlo fácil. Usa un mapa&quot; es el título de este blog. Creo que para este caso un mapa es la forma más fácil de representar y entender lo que sucede en una cancha. </p>
+
+<p>En este post se va a plasmar en un mapa los lanzamientos hechos por Stephen Curry durante la temporada regular 2015-2016.</p>
+
+<p>Para ello es necesario saber como pedir la información. A pesar de que la NBA no tiene un API pública de acceso de datos, hoy en día los frameworks JS hacen que cada vez más nos saltemos nuestro servidor de aplicaciones para atacar directamente al proveedor de datos.</p>
+
+<p>Depurando un poco las peticiones que se hacen desde la página <a href="http://stats.nba.com/">stats.nba.com</a>, se puede sacar de forma fácil qué peticiones se están ejecutando para obtener ciertos datos.</p>
+
+<p>Para implementar este ejemplo y poder obtener los lanzamientos, la petición será:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="nl">http:</span><span class="c1">//stats.nba.com/stats/shotchartdetail?CFID=33&amp;CFPARAMS=2015-16&amp;ContextFilter=&amp;ContextMeasure=FGA&amp;DateFrom=&amp;DateTo=&amp;GameID=&amp;GameSegment=&amp;LastNGames=0&amp;LeagueID=00&amp;Location=&amp;MeasureType=Base&amp;Month=0&amp;OpponentTeamID=0&amp;Outcome=&amp;PaceAdjust=N&amp;PerMode=PerGame&amp;Period=0&amp;PlayerID=201939&amp;PlusMinus=N&amp;Position=&amp;Rank=N&amp;RookieYear=&amp;Season=2015-16&amp;SeasonSegment=&amp;SeasonType=Regular%20Season&amp;TeamID=0&amp;VsConference=&amp;VsDivision=&amp;mode=Advanced&amp;showDetails=0&amp;showShots=1&amp;showZones=0</span>
+</code></pre></div>
+<p>Como no la respuesta no varía (ya ha pasado la temporada regular), me he guardado en un fichero la respuesta para así dejar tranquilos los servidores de la nba ;) . Esta es la respuesta del servicio: <a href="https://github.com/ccabanes/ccabanes.github.io/blob/master/assets/data/curry.js">CurryData</a> en formato JSON.</p>
+
+<p>Ahora solo falta procesar los datos y extrar la información que se quiera para pintarla en un mapa. 
+En este ejemplo, se van a visualizar simplemente los lanzamientos y su criterio de pintado será:</p>
+
+<ul>
+<li>Convertido: <strong>verde</strong></li>
+<li>Fallado: <strong>rojo</strong></li>
+</ul>
+
+<p>Para poder establecer los criterios, primero se deben de recorrer los datos y establecer la comparación de la propiedad que se está estudiando. En este caso, la respuesta del servicio tiene la siguiente estructura:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="nl">parameters:</span> <span class="o">[</span><span class="n">Array</span><span class="o">&lt;</span><span class="n">requestParams</span><span class="o">&gt;]</span>
+<span class="nl">resource:</span> <span class="s">&quot;shotchartdetail&quot;</span>
+<span class="nl">resultSets:</span> <span class="o">[</span>
+  <span class="o">{</span> 
+    <span class="o">{</span>
+      <span class="nl">headers:</span><span class="o">[</span><span class="n">Array</span><span class="o">&lt;</span><span class="n">DataHeader</span><span class="o">&gt;]</span> <span class="o">,</span>
+      <span class="nl">rowSet:</span><span class="o">[</span><span class="n">Array</span><span class="o">],</span> 
+      <span class="nl">name:</span><span class="s">&quot;Shot_Chart_Detail&quot;</span>
+    <span class="o">}</span>
+   <span class="o">}</span>
+<span class="o">]</span>
+</code></pre></div>
+<p>Estos son las cabeceras de los datos:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="s">&quot;GRID_TYPE&quot;</span>
+<span class="s">&quot;GAME_ID&quot;</span>
+<span class="s">&quot;GAME_EVENT_ID&quot;</span>
+<span class="s">&quot;PLAYER_ID&quot;</span>
+<span class="s">&quot;PLAYER_NAME&quot;</span>
+<span class="s">&quot;TEAM_ID&quot;</span>
+<span class="s">&quot;TEAM_NAME&quot;</span>
+<span class="s">&quot;PERIOD&quot;</span>
+<span class="s">&quot;MINUTES_REMAINING&quot;</span>
+<span class="s">&quot;SECONDS_REMAINING&quot;</span>
+<span class="s">&quot;EVENT_TYPE&quot;</span>
+<span class="s">&quot;ACTION_TYPE&quot;</span>
+<span class="s">&quot;SHOT_TYPE&quot;</span>
+<span class="s">&quot;SHOT_ZONE_BASIC&quot;</span>
+<span class="s">&quot;SHOT_ZONE_AREA&quot;</span>
+<span class="s">&quot;SHOT_ZONE_RANGE&quot;</span>
+<span class="s">&quot;SHOT_DISTANCE&quot;</span>
+<span class="s">&quot;LOC_X&quot;</span>
+<span class="s">&quot;LOC_Y&quot;</span>
+<span class="s">&quot;SHOT_ATTEMPTED_FLAG&quot;</span>
+<span class="s">&quot;SHOT_MADE_FLAG&quot;</span>
+</code></pre></div>
+<p>Para este ejemplo sencillo bastará con evaluar el campo <code>SHOT_MADE_FLAG</code>: para saber si el lanzamiento ha sido convertido, y los campos <code>LOC_X</code> y <code>LOC_Y</code> para mostrar desde dónde se ha efectuado el mismo.</p>
+
+<p>Llegado a este punto y en vista del volumen de datos (en torno a los 1600 elementos) decidí probar una librería para optimizar al máximo el manejo de colecciones de datos en JS llamada <a href="https://lodash.com/">lodash</a>. </p>
+
+<p>Con <strong>lodash</strong> se puede incluir iteraciones e índices como en el siguiente ejemplo, donde se procesan todos los datos y se obtiene su localización para pintarlo en el mapa:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java">   <span class="n">_</span><span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="n">mapOptions</span><span class="o">.</span><span class="na">shots</span><span class="o">.</span><span class="na">shotsData</span><span class="o">,</span> <span class="n">function</span><span class="o">(</span><span class="n">value</span><span class="o">,</span> <span class="n">key</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">mapOptions</span><span class="o">.</span><span class="na">shots</span><span class="o">.</span><span class="na">location</span><span class="o">.</span><span class="na">x</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">mapOptions</span><span class="o">.</span><span class="na">shots</span><span class="o">.</span><span class="na">location</span><span class="o">.</span><span class="na">y</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+            <span class="n">var</span> <span class="n">x</span> <span class="o">=</span><span class="n">_</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="n">mapOptions</span><span class="o">.</span><span class="na">shots</span><span class="o">.</span><span class="na">headerShots</span><span class="o">,</span> <span class="s">&quot;LOC_X&quot;</span><span class="o">);</span>
+            <span class="n">var</span> <span class="n">y</span> <span class="o">=</span><span class="n">_</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="n">mapOptions</span><span class="o">.</span><span class="na">shots</span><span class="o">.</span><span class="na">headerShots</span><span class="o">,</span> <span class="s">&quot;LOC_Y&quot;</span><span class="o">);</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">x</span> <span class="o">&gt;=</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">){</span>
+                <span class="n">mapOptions</span><span class="o">.</span><span class="na">shots</span><span class="o">.</span><span class="na">location</span><span class="o">.</span><span class="na">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span>
+                <span class="n">mapOptions</span><span class="o">.</span><span class="na">shots</span><span class="o">.</span><span class="na">location</span><span class="o">.</span><span class="na">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span>    
+            <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+                <span class="k">return</span><span class="o">;</span>
+            <span class="o">}</span>
+
+        <span class="o">}</span>
+            <span class="n">locateShotOnMap</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>          
+        <span class="o">});</span>   
+</code></pre></div>
+<h4>Y que CRS se aplica al mapa?</h4>
+
+<p>Esta es una pregunta fundamental. Cómo definir el sistema de referencia para el mapa? En este caso, puesto que los datos vienen en un sistema cartesiano normal y corriente (eje X, Y), se ha definido un <strong>CRS Simple</strong> con el centro en <strong>(0,0)</strong> <em>(<a href="http://ccabanes.github.io/leaflet/2016/03/05/Visor-de-imagenes-con-leaflet/">Otro ejemplo de CRS Simple aquí</a>)</em></p>
+
+<p>Aquí hay una <strong><a href="http://ccabanes.github.io/map-demos/nba/nba.html">DEMO</a></strong> para ver el resultado final.</p>
+
+        </section>
+
+        
+
+        <footer class="post-footer">
+            <!-- If we want to display author's name and bio -->
+            
+                <figure class="author-image">
+                    <a class="img" href="/" style="background-image: url(/assets/images/profile.png)">
+                    <span class="hidden">Carlos Cabanes's Picture</span></a>
+                </figure>
+                <section class="author">
+                    <!-- Author Name -->
+                    <h4> Carlos Cabanes </h4>
+                    <!-- Author Bio -->
+                    <p> 
+                        Cartógrafo. Analista GIS. Cartogramador.
+                    </p>
+                </section>                
+            
+
+            <!-- Share links section -->
+            <section class="share">
+    <h4>Share this post</h4>
+    
+    	
+    	    
+    <a class="icon-twitter" href="http://twitter.com/share?text=Datos NBA en un mapa web. Lanzamientos de Stephen Curry&amp;url=http://bit.ly/1WtWfln"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://bit.ly/1WtWfln"
+        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://bit.ly/1WtWfln"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+            
+            <!-- Disqus comments -->
+            
+                <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+
+        var disqus_shortname = 'ccabanes'; 
+        var disqus_developer =1 ; // developer mode is on
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+            
+            
+        </footer>
+
+    </article>
+
+</main>
+    <footer class="site-footer clearfix">
+      <section class="copyright">
+        <a href="/">Cartogramando</a> &copy; 
+               &bull; All rights reserved.
+      </section>
+      <section class="poweredby">Made with Jekyll using 
+        <a href="http://github.com/rosario/kasper">Kasper theme</a>
+      </section>
+    </footer>
+    
+    <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Google Analytics Tracking code -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-68142493-1', 'auto');
+      ga('send', 'pageview');
+    </script> 
+  </body>
+</html>

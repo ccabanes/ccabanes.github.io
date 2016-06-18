@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Cartogramando - Hazlo fácil. Usa un mapa</title>
+    <meta name="description" content="gis, sig, mapping, leaflet, javascript, carto, postgis, spatial, webmapping, openlayers, arcgis" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <!-- Customisation  -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']]},
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: false
+    }
+    );
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+</head>
+
+<body class="post-template">
+    <header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="/">Home</a>
+        <a class="subscribe-button icon" href="http://ccabanes.github.io/about">About me</a>
+        <a class="subscribe-button icon-feed" href="/rss.xml">Subscribe</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post">
+        <header class="post-header">
+            <h1 class="post-title">Conceptos de Cartografía II</h1>
+            <section class="post-meta">                
+                <time class="post-date" datetime="2015-12-27">27 Dec 2015</time>
+                 
+                    on cartography 
+                
+            </section>
+        </header>
+
+    <!-- <header class="post-header">
+            <a id="blog-logo" href="http://ccabanes.github.io">
+                
+                    <span class="blog-title">Cartogramando</span>
+                 
+            </a>
+        </header> -->
+        
+        <!-- <span class="post-meta">
+            <time datetime="2015-12-27">27 Dec 2015</time>
+             
+                on cartography 
+            
+        </span> -->
+
+        <!-- <h1 class="post-title">Conceptos de Cartografía II</h1> -->
+
+        <section class="post-content">
+            <p>Este es el segundo de la serie de post sobre conceptos de cartografía. En este caso voy a hablar de qué son los sistemas de proyección cartográficos y como afectan a la representación de los elementos sobre mapas.</p>
+
+<p>Lo primero, qué es una proyección? Sigún la <a href="https://es.wikipedia.org/wiki/Proyecci%C3%B3n_cartogr%C3%A1fica">WikiPedia</a> es un sistema de representación gráfico que establece una relación ordenada de puntos entre la superficie de la Tierra (esférico) y un mapa (plano). Es el paso del 3D al 2D. Este paso a las dos dimensiones siempre conlleva unas distorsiones asociadas que pueden estar asociadas con las distancias, los ángulos o las áreas medidas sobre el mapa resultante. En función de estas distorsiones se clasifican los diferentes sistemas de proyección según sus propiedades</p>
+
+<h3>Propiedades de las Proyecciones Cartográficas</h3>
+
+<h5>Proyecciones conformes:</h5>
+
+<p>Conservan los ángulos medidos entre dos puntos en la superficie de referencia y el mapa</p>
+
+<h5>Proyecciones equidistantes</h5>
+
+<p>Conserva las distancias medidas en la superficie de referencia y el mapa</p>
+
+<h5>Proyecciones equivalentes</h5>
+
+<p>Conservan las superficies medidas en la superficie de referencia y el mapa</p>
+
+<h5>Proyecciones afilácticas</h5>
+
+<p>No conserva ninguna de las propiedades anteriores</p>
+
+<p>También se pueden clasificar los diferentes sistemas de proyección según su tipo:</p>
+
+<h3>Tipos de Proyecciones Cartográficas</h3>
+
+<h4>1. Por desarrollo. Proyección sobre superficie desenrollable</h4>
+
+<h5><a href="https://es.wikipedia.org/wiki/Proyecci%C3%B3n_cil%C3%ADndrica" title="Wikipedia">Proyección cilíndrica</a></h5>
+
+<blockquote>
+<p>&quot;Una proyección cilíndrica es una proyección cartográfica que usa un cilindro tangente.
+El cilindro es una figura geométrica que puede desarrollarse en un plano y matemáticamente es muy utilizada. La más famosa es una proyección cilíndrica modificada conocida por proyección de Mercator.&quot;</p>
+</blockquote>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Usgs_map_mercator.svg/413px-Usgs_map_mercator.svg.png" alt="Proyección Cilíndrica">  </p>
+
+<iframe width="100%" height="520" frameborder="0" src="https://carcaas.cartodb.com/viz/54227eb4-ac90-11e5-aeab-0ea31932ec1d/embed_map" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+
+<h5><a href="https://es.wikipedia.org/wiki/Proyecci%C3%B3n_c%C3%B3nica_cartogr%C3%A1fica" title="Wikipedia">Proyección cónica</a></h5>
+
+<blockquote>
+<p>&quot;Es una proyección tangente, que toca una linea con otra, que proyecta los elementos de la superficie esferica terrestre sobre una superficie &quot;geometrica(cono)&quot;. Tomando el vertice, punto en el que coinciden los dos angulos de un poligono,en el eje de los dos polos.&quot;</p>
+</blockquote>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/d/da/USGS_map_Albers_conic_tall.gif" alt="Proyección Cónica">  </p>
+
+<iframe width="100%" height="520" frameborder="0" src="https://carcaas.cartodb.com/viz/5e3ba2ec-a7d4-11e5-82fd-0ecfd53eb7d3/embed_map" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+
+<h4>2. Azimutales. Proyección sobre un plano</h4>
+
+<h5><a href="https://es.wikipedia.org/wiki/Proyecci%C3%B3n_acimutal" title="Wikipedia">Proyección azimutal</a></h5>
+
+<blockquote>
+<p>&quot;La proyección acimutal o proyección cenital, es la que se consigue proyectando una porción de la Tierra sobre un plano tangente a la esfera en un punto seleccionado, obteniéndose la visión que se lograría ya sea desde el centro de la Tierra o desde un punto del espacio exterior.&quot;</p>
+</blockquote>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Usgs_map_azimuthal_equidistant.PNG" alt="Proyección Azimutal">  </p>
+
+<iframe width="100%" height="520" frameborder="0" src="https://carcaas.cartodb.com/viz/2547dc16-ac8f-11e5-b9ed-0e31c9be1b51/embed_map" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+
+        </section>
+
+        
+
+        <footer class="post-footer">
+            <!-- If we want to display author's name and bio -->
+            
+                <figure class="author-image">
+                    <a class="img" href="/" style="background-image: url(/assets/images/profile.png)">
+                    <span class="hidden">Carlos Cabanes's Picture</span></a>
+                </figure>
+                <section class="author">
+                    <!-- Author Name -->
+                    <h4> Carlos Cabanes </h4>
+                    <!-- Author Bio -->
+                    <p> 
+                        Cartógrafo. Analista GIS. Cartogramador.
+                    </p>
+                </section>                
+            
+
+            <!-- Share links section -->
+            <section class="share">
+    <h4>Share this post</h4>
+    
+    	
+    	    
+    <a class="icon-twitter" href="http://twitter.com/share?text=Conceptos de Cartografía II&amp;url=http://bit.ly/1Pr06vp"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://bit.ly/1Pr06vp"
+        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://bit.ly/1Pr06vp"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+            
+            <!-- Disqus comments -->
+            
+                <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+
+        var disqus_shortname = 'ccabanes'; 
+        var disqus_developer =1 ; // developer mode is on
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+            
+            
+        </footer>
+
+    </article>
+
+</main>
+    <footer class="site-footer clearfix">
+      <section class="copyright">
+        <a href="/">Cartogramando</a> &copy; 
+               &bull; All rights reserved.
+      </section>
+      <section class="poweredby">Made with Jekyll using 
+        <a href="http://github.com/rosario/kasper">Kasper theme</a>
+      </section>
+    </footer>
+    
+    <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Google Analytics Tracking code -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-68142493-1', 'auto');
+      ga('send', 'pageview');
+    </script> 
+  </body>
+</html>

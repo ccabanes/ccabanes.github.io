@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+  xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>Cartogramando</title>
+    <link>http://ccabanes.github.io</link>
+    <description>Hazlo fácil. Usa un mapa</description>
+    <pubDate>Fri, 20 May 2016 13:00:00 +0200</pubDate>
+    <item>
+      <title>Datos NBA en un mapa web. Lanzamientos de Stephen Curry</title>
+      <link>http://ccabanes.github.io/map/leaflet/lodash/dataviz/nba/2016/05/20/Shot-NBA-map/</link>
+      <description>&lt;p&gt;Coincidiendo con los playoffs 2016, y recordando algún post leído hace unos meses, se me ocurrió la idea de intentar plasmar mediante un mapa en &lt;a href=&quot;http://leafletjs.com/&quot;&gt;LeafletJS&lt;/a&gt; información a cerca de los partidos o jugadores de la NBA.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 20 May 2016 13:00:00 +0200</pubDate>
+      <dc:date>2016-05-20T13:00:00+02:00</dc:date>
+    </item>
+    <item>
+      <title>Datos NBA en un mapa web. Lanzamientos de Stephen Curry</title>
+      <link>http://ccabanes.github.io/map/leaflet/lodash/dataviz/nba/2016/05/20/2016-05-20-Shot-NBA-map/</link>
+      <description>&lt;p&gt;Coincidiendo con los playoffs 2016, y recordando algún post leído hace unos meses, se me ocurrió la idea de intentar plasmar mediante un mapa en &lt;a href=&quot;http://leafletjs.com/&quot;&gt;LeafletJS&lt;/a&gt; información a cerca de los partidos o jugadores de la NBA.&lt;/p&gt;
+</description>
+      <pubDate>Fri, 20 May 2016 13:00:00 +0200</pubDate>
+      <dc:date>2016-05-20T13:00:00+02:00</dc:date>
+    </item>
+    <item>
+      <title>Aplicar caché en Spring</title>
+      <link>http://ccabanes.github.io/java/spring/cache/2016/03/05/2016-03-05-Cacheado-en-spring/</link>
+      <description>&lt;p&gt;Desde hace ya unas versiones &lt;a href=&quot;https://spring.io/&quot;&gt;Spring&lt;/a&gt; facilita el uso de la caché de forma fácil para el desarrollador. Mediante la anotación @Cacheable se puede aplicar caché a cualquier método que se quiera dentro de una aplicación spring.&lt;/p&gt;
+</description>
+      <pubDate>Sat, 05 Mar 2016 12:00:00 +0100</pubDate>
+      <dc:date>2016-03-05T12:00:00+01:00</dc:date>
+    </item>
+    <item>
+      <title>Leaflet como visor de imágenes</title>
+      <link>http://ccabanes.github.io/leaflet/2016/03/05/Visor-de-imagenes-con-leaflet/</link>
+      <description>&lt;p&gt;Aunque no es la finalidad principal de esta librería, el poder visualizar imágenes sueltas, sin ser nada relacionado con mapas, también es posible con &lt;a href=&quot;http://leafletjs.com/&quot;&gt;Leaflet.js&lt;/a&gt;.&lt;/p&gt;
+</description>
+      <pubDate>Sat, 05 Mar 2016 00:00:00 +0100</pubDate>
+      <dc:date>2016-03-05T00:00:00+01:00</dc:date>
+    </item>
+    <item>
+      <title>Aplicar caché en Spring</title>
+      <link>http://ccabanes.github.io/java/spring/cache/2016/03/05/Cacheado-en-spring/</link>
+      <description>&lt;p&gt;Desde hace ya unas versiones &lt;a href=&quot;https://spring.io/&quot;&gt;Spring&lt;/a&gt; facilita el uso de la caché de forma fácil para el desarrollador. Mediante la anotación @Cacheable se puede aplicar caché a cualquier método que se quiera dentro de una aplicación spring.&lt;/p&gt;
+</description>
+      <pubDate>Sat, 05 Mar 2016 00:00:00 +0100</pubDate>
+      <dc:date>2016-03-05T00:00:00+01:00</dc:date>
+    </item>
+    <item>
+      <title>Leaflet como visor de imágenes</title>
+      <link>http://ccabanes.github.io/leaflet/2016/03/05/2016-03-04-Visor-de-imagenes-con-leaflet/</link>
+      <description>&lt;p&gt;Aunque no es la finalidad principal de esta librería, el poder visualizar imágenes sueltas, sin ser nada relacionado con mapas, también es posible con &lt;a href=&quot;http://leafletjs.com/&quot;&gt;Leaflet.js&lt;/a&gt;.&lt;/p&gt;
+</description>
+      <pubDate>Sat, 05 Mar 2016 00:00:00 +0100</pubDate>
+      <dc:date>2016-03-05T00:00:00+01:00</dc:date>
+    </item>
+    <item>
+      <title>Visualizar WMTS en Leaflet</title>
+      <link>http://ccabanes.github.io/wmts/webservices/webmapping/gis/leaflet/ogc/2016/02/20/Visualizar-WMTS-en-Leaflet/</link>
+      <description>&lt;p&gt;Este es un segundo post sobre los servicios WMTS. Si quieres saber que se dijo en el primero, &lt;a href=&quot;http://ccabanes.github.io/wmts/webservices/webmapping/gis/ogc/2016/02/12/Servicios-WMTS/&quot;&gt;aquí&lt;/a&gt; tienes el enlace.&lt;/p&gt;
+</description>
+      <pubDate>Sat, 20 Feb 2016 00:00:00 +0100</pubDate>
+      <dc:date>2016-02-20T00:00:00+01:00</dc:date>
+    </item>
+    <item>
+      <title>Html en post Jekyll</title>
+      <link>http://ccabanes.github.io/p%C3%A1gina/html/en/post/con/jekyll/2016/02/13/2016-02-12-Incluir-pagina-html-en-post-jekyll/</link>
+      <description>&lt;p&gt;Como incluir una pequeña página o código de demostración, funcionando, en un post de jekyll escrito en markdown.
+Esta cuestión que parece trivial, para los no iniciados puede ser un quebradero de cabeza. En mi experiencia personal, dado que estoy en la parte inicial de la curva de aprendizaje de esta tecnología de bloggin, estuve un buen rato para discernir algún tipo de camino con el que resolver la pregunta en cuestión.&lt;/p&gt;
+</description>
+      <pubDate>Sat, 13 Feb 2016 10:33:00 +0100</pubDate>
+      <dc:date>2016-02-13T10:33:00+01:00</dc:date>
+    </item>
+    <item>
+      <title>Servicios WMTS</title>
+      <link>http://ccabanes.github.io/wmts/webservices/webmapping/gis/ogc/2016/02/12/Servicios-WMTS/</link>
+      <description>&lt;p&gt;El uso de servicios de cartografía base está ampliamente extendido en el uso de aplicaciones de webmapping. Los más conocidos por ser los primeros en llegar fueron los servicios WMS. Esta popularidad está fuertemente ligada a la cantidad de usuarios que hacen uso del mismo, lo que genera una nueva necesidad: &lt;strong&gt;eficiencia en cuanto a la agilidad de la respuesta de los servicios, costes computacionales, etc.&lt;/strong&gt;&lt;/p&gt;
+</description>
+      <pubDate>Fri, 12 Feb 2016 10:33:00 +0100</pubDate>
+      <dc:date>2016-02-12T10:33:00+01:00</dc:date>
+    </item>
+    <item>
+      <title>10 funciones Postgis que debes conocer</title>
+      <link>http://ccabanes.github.io/cartography/postgis/bbdd/2016/01/23/10-10-funciones-postgis-que-debes-conocer/</link>
+      <description>&lt;p&gt;El uso de un sistema de gestión de base de datos con soporte geospacial es fundamental para cualquier entorno GIS en todos los niveles. Este post tiene como propósito recopilar las funciones que bajo mi criterio son más utilizadas (o al menos son la que más utilizo) y por lo tanto, es altamente recomendable que cualquier gestor de información geográfica deba saber.&lt;/p&gt;
+</description>
+      <pubDate>Sat, 23 Jan 2016 21:36:00 +0100</pubDate>
+      <dc:date>2016-01-23T21:36:00+01:00</dc:date>
+    </item>
+    <item>
+      <title>Conceptos de Cartografía III</title>
+      <link>http://ccabanes.github.io/cartography/2015/12/30/conceptos-webmapping-III/</link>
+      <description>&lt;p&gt;Este es el tercer post a cerca de fundamentos cartográficos. En esta entrada voy a tratar los diferentes sistemas de coordenadas.
+Es muy común que se manejen diferentes tipos de coordenadas, sobre diferentes sistemas y en todos los casos se deben de saber manejar y usar correctamente en su respectivo contexto.&lt;/p&gt;
+</description>
+      <pubDate>Wed, 30 Dec 2015 21:36:00 +0100</pubDate>
+      <dc:date>2015-12-30T21:36:00+01:00</dc:date>
+    </item>
+    <item>
+      <title>Conceptos de Cartografía II</title>
+      <link>http://ccabanes.github.io/cartography/2015/12/27/conceptos-webmapping-II/</link>
+      <description>&lt;p&gt;Este es el segundo de la serie de post sobre conceptos de cartografía. En este caso voy a hablar de qué son los sistemas de proyección cartográficos y como afectan a la representación de los elementos sobre mapas.&lt;/p&gt;
+</description>
+      <pubDate>Sun, 27 Dec 2015 21:36:00 +0100</pubDate>
+      <dc:date>2015-12-27T21:36:00+01:00</dc:date>
+    </item>
+    <item>
+      <title>Crear URLs cortas con jekyll</title>
+      <link>http://ccabanes.github.io/blog/2015/12/17/Crear-shortUrl-jekyll/</link>
+      <description>&lt;p&gt;Una forma sencilla de crear url cortas en un blog con jekyll es incluir una nueva variable a nivel de post que podamos evaluar dentro de la plantilla que gestiona los enlaces de las redes sociales. &lt;/p&gt;
+</description>
+      <pubDate>Thu, 17 Dec 2015 21:36:00 +0100</pubDate>
+      <dc:date>2015-12-17T21:36:00+01:00</dc:date>
+    </item>
+    <item>
+      <title>My draft</title>
+      <link>http://ccabanes.github.io/draft/2015/12/17/demo-draft-post/</link>
+      <description>&lt;p&gt;Este es el primero de una serie de post con los que quiero empezar este blog, el cual pretendo iniciarlo desde hace ya un tiempo. 
+Hoy en día topógrafos, cartógrafos, geógrafos, agrónomos, forestales, informáticos, telecos, son solo una muestra de los profesionales que nos dedicamos al mundo del GIS. En definitiva, hacer mapas.&lt;/p&gt;
+</description>
+      <pubDate>Thu, 17 Dec 2015 11:18:00 +0100</pubDate>
+      <dc:date>2015-12-17T11:18:00+01:00</dc:date>
+    </item>
+    <item>
+      <title>Conceptos de Cartografía I</title>
+      <link>http://ccabanes.github.io/cartography/2015/12/13/draft/</link>
+      <description>&lt;p&gt;$$tileSpan = tileWidth * pixelSpan$$&lt;/p&gt;
+</description>
+      <pubDate>Sun, 13 Dec 2015 11:18:00 +0100</pubDate>
+      <dc:date>2015-12-13T11:18:00+01:00</dc:date>
+    </item>
+    <item>
+      <title>Conceptos de Cartografía I</title>
+      <link>http://ccabanes.github.io/cartography/2015/12/13/conceptos-webmapping/</link>
+      <description>&lt;p&gt;Este es el primero de una serie de post con los que quiero empezar este blog, el cual pretendo iniciarlo desde hace ya un tiempo. 
+Hoy en día topógrafos, cartógrafos, geógrafos, agrónomos, forestales, informáticos, telecos, son solo una muestra de los profesionales que nos dedicamos al mundo del GIS. En definitiva, hacer mapas.&lt;/p&gt;
+</description>
+      <pubDate>Sun, 13 Dec 2015 11:18:00 +0100</pubDate>
+      <dc:date>2015-12-13T11:18:00+01:00</dc:date>
+    </item>
+    <dc:date>2016-05-20T13:00:00+02:00</dc:date>
+  </channel>
+</rss>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Cartogramando - Hazlo fácil. Usa un mapa</title>
+    <meta name="description" content="gis, sig, mapping, leaflet, javascript, carto, postgis, spatial, webmapping, openlayers, arcgis" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <!-- Customisation  -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']]},
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: false
+    }
+    );
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+</head>
+
+<body class="post-template">
+    <link rel='http://ccabanes.github.io/assets/map/stylesheet' href='css/L.Control.MousePosition.css'>     
+<link rel='stylesheet' href='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css' />
+<script src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'></script>
+<script src='http://ccabanes.github.io/assets/map/lib/proj4-compressed.js'></script>
+<script src='http://ccabanes.github.io/assets/map/src/proj4leaflet.js'></script>
+<script src='http://ccabanes.github.io/assets/map/lib/L.Control.MousePosition.js'></script>
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="/">Home</a>
+        <a class="subscribe-button icon" href="http://ccabanes.github.io/about">About me</a>
+        <a class="subscribe-button icon-feed" href="/rss.xml">Subscribe</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post">
+        <header class="post-header">
+            <h1 class="post-title">Visualizar WMTS en Leaflet</h1>
+            <section class="post-meta">                
+                <time class="post-date" datetime="2016-02-20">20 Feb 2016</time>
+                 
+                    on wmts, webservices, webmapping, gis, leaflet, and ogc 
+                
+            </section>
+        </header>
+
+    <!-- <header class="post-header">
+            <a id="blog-logo" href="http://ccabanes.github.io">
+                
+                    <span class="blog-title">Cartogramando</span>
+                 
+            </a>
+        </header> -->
+        
+        <!-- <span class="post-meta">
+            <time datetime="2016-02-20">20 Feb 2016</time>
+             
+                on wmts, webservices, webmapping, gis, leaflet, and ogc 
+            
+        </span> -->
+
+        <!-- <h1 class="post-title">Visualizar WMTS en Leaflet</h1> -->
+        <section class="post-content">
+            <p>Este es un segundo post sobre los servicios WMTS. Si quieres saber que se dijo en el primero, <a href="http://ccabanes.github.io/wmts/webservices/webmapping/gis/ogc/2016/02/12/Servicios-WMTS/">aquí</a> tienes el enlace.</p>
+
+<p>La librería javascript que se va a usar para visualizar este tipo de servicio es <a href="http://leafletjs.com">Leaflet.js</a>. Esta librería es bastante reciente comparada con otras más clásicas como <a href="http://openlayers.org">OpenLayers</a> y aunque tengan el mismo objetivo que es pintar mapas y datos sobre estos, lo hacen mediante conceptos bastante distintos.</p>
+
+<p>Si se está familiarizado con las librerías javascript para visualización de mapas en la web, sabrás que incluir un servicio de mapas base como WMTS es relativametne sencillo. Sin embargo, para cartogramadores inexpertos el consumo de servicios sobre CRS locales pueden dar algún quebradero de cabeza ya que es necesario tener bien afianzados ciertos concetos.</p>
+
+<p>Lo primero que se debe de conocer al usar leaflet.js es que por si solo no tiene soporte para manejar sistemas de proyecciones (exceptuando lso CRS 3857 y 4326). Para poder incluir este soporte es necesario apoyarse en el plugin <a href="http://kartena.github.io/Proj4Leaflet/">Proj4Leaflet</a>. A grandes rasgos este plugin extiende la funcionalidad básica de los CRS de leaflet.js y se apoya en proj4.js para implementar el soporte para proyecciones.</p>
+
+<blockquote>
+<p>&quot;Proj4Leaflet makes it possible to use projections and CRS not built into Leaflet. All major projections are supported by using the popular and well-tested Proj4js library.&quot;</p>
+</blockquote>
+
+<p>Antes de empezar, es importante recalcar que a diferencia de los servicios WMTS publicados sobre los CRS: 4326 y 3857, no existe ninguna normativa en cuanto a las resoluciones y denominadores de escala para los diferentes niveles de zoom para el resto de sistemas. Esto implica que es necesario modificar el comportamiento habitual de la implementación para adaptarla a las particularidades de cada capa.</p>
+
+<h4>Ejemplo de servicio WMTS</h4>
+
+<p>Voy a usar los servicios cántabros de ortofotos para realizar un pequeño ejemplo. Si quieres probar con cualquier otro, en la idee tienen una lista con los <a href="http://idee.es/web/guest/directorio-de-servicios?p_p_id=DIRSRVIDEE_WAR_DIRSRVIDEEportlet_INSTANCE_q4BW&amp;p_p_lifecycle=1&amp;p_p_state=normal&amp;p_p_mode=view&amp;p_p_col_id=column-1&amp;p_p_col_count=1&amp;_DIRSRVIDEE_WAR_DIRSRVIDEEportlet_INSTANCE_q4BW_descSrv=VISUALIZACION&amp;_DIRSRVIDEE_WAR_DIRSRVIDEEportlet_INSTANCE_q4BW_supertipo=OGC&amp;_DIRSRVIDEE_WAR_DIRSRVIDEEportlet_INSTANCE_q4BW_tipoServicio=WMTS">servicios públicos WMTS</a>. </p>
+
+<p><strong>Propiedades de la capa de ejemplo:</strong></p>
+
+<ul>
+<li><strong>URL del servicio</strong>: http://geoservicios.cantabria.es/inspire/rest/services/Ortofoto_2014/MapServer/WMTS?</li>
+<li><strong>Capabilities</strong> : <a href="http://geoservicios.cantabria.es/inspire/rest/services/Ortofoto_2014/MapServer/WMTS?service=WMTS&amp;request=getCapabilities">link</a></li>
+<li><strong>Layer</strong>: Ortofoto_2014</li>
+<li><strong>CRS</strong>: EPSG:25830</li>
+</ul>
+
+<p>Este servicio a diferencia de otros de este tipo, solo tiene un sistema de referencia sobre el que se sirve la capa <em>Ortofoto_2014</em>. Es habitual que para un mismo servicio WMTS existan diferentes CRS sobre los que consumir la información.</p>
+
+<p>Los parámetros más importantes a tener en cuenta para el consumo de este tipo de servicios son el  <em>ScaleDenominator</em> y <em>TopLeftCorner</em>. 
+El parámetro <em>ScaleDenominator</em> permite calcular la resolución de cada nivel de zoom (<a href="http://bit.ly/1Qy0Zib">ver explicación en post anterior</a>) y el parámetro <em>TopLeftCorner</em> establece el punto inicial sobre el que contar el desplazamiento en los ejes X,Y para obtener las posiciones de los tiles y montar así la petición.</p>
+
+<p>Ahora sí, vamos con el código:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">cantabria_resol</span> <span class="o">=</span> <span class="p">[</span><span class="mf">541.8677504021</span><span class="p">,</span><span class="mf">270.9338752011</span><span class="p">,</span><span class="mf">203.2004064008</span><span class="p">,</span><span class="mf">135.4669376005</span><span class="p">,</span><span class="mf">101.6002032004</span><span class="p">,</span><span class="mf">67.7334688003</span><span class="p">,</span><span class="mf">33.8667344001</span><span class="p">,</span><span class="mf">16.9333672001</span><span class="p">,</span><span class="mf">8.4666836</span><span class="p">,</span><span class="mf">4.2333418</span><span class="p">,</span><span class="mf">2.1166709</span><span class="p">,</span><span class="mf">1.05833545</span><span class="p">,</span><span class="mf">0.529167725</span><span class="p">,</span><span class="mf">0.2645838625</span><span class="p">,</span><span class="mf">0.1322919313</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">ETRS89_Cantabria</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">L</span><span class="p">.</span><span class="nx">Proj</span><span class="p">.</span><span class="nx">CRS</span><span class="p">(</span><span class="s1">&#39;EPSG:25830&#39;</span><span class="p">,</span>
+<span class="s1">&#39;+proj=utm +zone=30 +ellps=GRS80 +units=m +no_defs&#39;</span><span class="p">,</span>
+<span class="p">{</span>
+<span class="nx">resolutions</span><span class="o">:</span> <span class="nx">cantabria_resol</span><span class="p">,</span>
+<span class="nx">origin</span><span class="o">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">5120900.0</span> <span class="p">,</span> <span class="mf">9998100.0</span><span class="p">]</span>
+<span class="p">});</span>
+<span class="kd">var</span> <span class="nx">mapCantabria</span> <span class="o">=</span> <span class="nx">L</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="s1">&#39;mapCantabria&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">crs</span><span class="o">:</span> <span class="nx">ETRS89_Cantabria</span><span class="p">,</span>
+        <span class="nx">continuousWorld</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">worldCopyJump</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> 
+        <span class="nx">scale</span><span class="o">:</span> <span class="nx">cantabria_scale</span>
+    <span class="p">}).</span><span class="nx">setView</span><span class="p">([</span><span class="mf">43.421936</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.781941</span><span class="p">],</span> <span class="mi">7</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">can_orto_Url_WMTS</span> <span class="o">=</span> <span class="s1">&#39;http://geoservicios.cantabria.es/inspire/rest/services/Ortofoto_2014/MapServer/WMTS?service=WMTS&amp;request=GetTile&amp;version=1.0.0&amp;layer=Ortofoto_2014&amp;style=default&amp;tilematrixset=default028mm&amp;TileMatrix={z}&amp;TileRow={y}&amp;TileCol={x}&#39;</span><span class="p">,</span>
+<span class="nx">attrib</span> <span class="o">=</span> <span class="s1">&#39;Ortofoto 2014 OGC WMTS&#39;</span><span class="p">,</span>
+<span class="nx">Orto2014_Layer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">L</span><span class="p">.</span><span class="nx">TileLayer</span><span class="p">(</span><span class="nx">can_orto_Url_WMTS</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">scheme</span><span class="o">:</span> <span class="s1">&#39;xyz&#39;</span><span class="p">,</span>
+    <span class="nx">maxZoom</span><span class="o">:</span> <span class="nx">cantabria_resol</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">minZoom</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nx">opacity</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">,</span>
+    <span class="nx">continuousWorld</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">attribution</span><span class="o">:</span> <span class="nx">attrib</span>
+<span class="p">});</span> 
+<span class="kd">var</span> <span class="nx">can_base_Url_WMTS</span> <span class="o">=</span> <span class="s1">&#39;http://geoservicios.cantabria.es/inspire/rest/services/Cartografia_Basica_Topografica/MapServer/WMTS?service=WMTS&amp;request=GetTile&amp;version=1.0.0&amp;layer=Cartografia_Basica_Topografica&amp;style=default&amp;tilematrixset=default028mm&amp;TileMatrix={z}&amp;TileRow={y}&amp;TileCol={x}&#39;</span><span class="p">,</span>
+<span class="nx">attrib</span> <span class="o">=</span> <span class="s1">&#39;Ortofoto 2014 OGC WMTS&#39;</span><span class="p">,</span>
+<span class="nx">Base_Layer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">L</span><span class="p">.</span><span class="nx">TileLayer</span><span class="p">(</span><span class="nx">can_base_Url_WMTS</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">scheme</span><span class="o">:</span> <span class="s1">&#39;xyz&#39;</span><span class="p">,</span>
+    <span class="nx">maxZoom</span><span class="o">:</span> <span class="nx">cantabria_resol</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">minZoom</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nx">opacity</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">,</span>
+    <span class="nx">continuousWorld</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">attribution</span><span class="o">:</span> <span class="nx">attrib</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">carto_base</span> <span class="o">=</span><span class="p">{</span>
+    <span class="s2">&quot;Ortofoto 2014&quot;</span><span class="o">:</span> <span class="nx">Orto2014_Layer</span> <span class="p">,</span>   
+    <span class="s2">&quot;Cartografía Basica&quot;</span> <span class="o">:</span> <span class="nx">Base_Layer</span>
+
+<span class="p">};</span>
+
+
+<span class="nx">mapCantabria</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">Orto2014_Layer</span><span class="p">);</span>
+<span class="nx">mapCantabria</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">Base_Layer</span><span class="p">);</span>
+<span class="nx">L</span><span class="p">.</span><span class="nx">control</span><span class="p">.</span><span class="nx">layers</span><span class="p">(</span><span class="nx">carto_base</span><span class="p">).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">mapCantabria</span><span class="p">);</span>
+<span class="nx">L</span><span class="p">.</span><span class="nx">control</span><span class="p">.</span><span class="nx">mousePosition</span><span class="p">().</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">mapCantabria</span><span class="p">);</span>
+<span class="nx">L</span><span class="p">.</span><span class="nx">control</span><span class="p">.</span><span class="nx">scale</span><span class="p">({</span><span class="s1">&#39;position&#39;</span><span class="o">:</span><span class="s1">&#39;bottomleft&#39;</span><span class="p">,</span><span class="s1">&#39;metric&#39;</span><span class="o">:</span><span class="kc">true</span><span class="p">,</span><span class="s1">&#39;imperial&#39;</span><span class="o">:</span><span class="kc">false</span><span class="p">}).</span><span class="nx">addTo</span><span class="p">(</span><span class="nx">mapCantabria</span><span class="p">);</span>
+</code></pre></div>
+        </section>    
+
+        
+            <h5 class="post-title">Demo WMTS Cantabria</h5>            
+            <section style='width:100%; height:400px'>
+<div id ='mapCantabria' style='width:100%; height:100%'></div>	
+<script type='text/javascript'>
+
+	var cantabria_resol = [541.8677504021,270.9338752011,203.2004064008,135.4669376005,101.6002032004,67.7334688003,33.8667344001,16.9333672001,8.4666836,4.2333418,2.1166709,1.05833545,0.529167725,0.2645838625,0.1322919313];
+	var cantabria_scale = function(zoom) {	  	
+		return 1 / cantabria_resol[zoom];
+	};
+	var ETRS89_Cantabria = new L.Proj.CRS('EPSG:25830',
+	'+proj=utm +zone=30 +ellps=GRS80 +units=m +no_defs',
+	{
+	resolutions: cantabria_resol,
+	origin: [-5120900.0 , 9998100.0]
+	});
+	var mapCantabria = L.map('mapCantabria', {
+		crs: ETRS89_Cantabria,
+		continuousWorld: true,
+		worldCopyJump: false, 
+		scale: cantabria_scale
+	}).setView([43.421936, -3.781941], 5);
+
+		var pnoa25830_layer  = new L.TileLayer('http://www.ign.es/wmts/pnoa-ma?service=WMTS&request=GetTile&version=1.0.0&layer=OI.OrthoimageCoverage&style=default&tilematrixset=EPSG:25830&format=image%2Fpng&height=256&width=256&TileMatrix={z}&TileRow={y}&TileCol={x}', {
+		continuousWorld: true,
+		attribution: '&copy; <a href="http://www.disid.com/">DISID</a> PNOA, WMTS',
+	});
+
+
+
+	var can_orto_Url_WMTS = 'http://geoservicios.cantabria.es/inspire/rest/services/Ortofoto_2014/MapServer/WMTS?service=WMTS&request=GetTile&version=1.0.0&layer=Ortofoto_2014&style=default&tilematrixset=default028mm&TileMatrix={z}&TileRow={y}&TileCol={x}',
+	attrib = 'Ortofoto 2014 OGC WMTS',
+	Orto2014_Layer = new L.TileLayer(can_orto_Url_WMTS, {
+	    scheme: 'xyz',
+	    maxZoom: cantabria_resol.length - 1,
+	    minZoom: 0,
+	    opacity: 0.5,
+	    continuousWorld: true,
+	    attribution: attrib
+	});	
+	var can_base_Url_WMTS = 'http://geoservicios.cantabria.es/inspire/rest/services/Cartografia_Basica_Topografica/MapServer/WMTS?service=WMTS&request=GetTile&version=1.0.0&layer=Cartografia_Basica_Topografica&style=default&tilematrixset=default028mm&TileMatrix={z}&TileRow={y}&TileCol={x}',
+	attrib = 'Ortofoto 2014 OGC WMTS',
+	Base_Layer = new L.TileLayer(can_base_Url_WMTS, {
+	    scheme: 'xyz',
+	    maxZoom: cantabria_resol.length - 1,
+	    minZoom: 0,
+	    opacity: 0.5,
+	    continuousWorld: true,
+	    attribution: attrib
+	});
+
+	var carto_base ={
+		'Ortofoto 2014': Orto2014_Layer	,	
+		'Cartografía Basica' : Base_Layer	
+	};
+	
+	mapCantabria.addLayer(Orto2014_Layer);
+	mapCantabria.addLayer(Base_Layer);
+	L.control.layers(carto_base).addTo(mapCantabria);
+	L.control.mousePosition().addTo(mapCantabria);
+	L.control.scale({'position':'bottomleft','metric':true,'imperial':false}).addTo(mapCantabria);
+
+</script>
+</section>
+        
+        
+
+        <footer class="post-footer">
+            <!-- If we want to display author's name and bio -->
+            
+                <figure class="author-image">
+                    <a class="img" href="/" style="background-image: url(/assets/images/profile.png)">
+                    <span class="hidden">Carlos Cabanes's Picture</span></a>
+                </figure>
+                <section class="author">
+                    <!-- Author Name -->
+                    <h4> Carlos Cabanes </h4>
+                    <!-- Author Bio -->
+                    <p> 
+                        Cartógrafo. Analista GIS. Cartogramador.
+                    </p>
+                </section>                
+            
+
+            <!-- Share links section -->
+            <section class="share">
+    <h4>Share this post</h4>
+    
+    	
+    	    
+    <a class="icon-twitter" href="http://twitter.com/share?text=Visualizar WMTS en Leaflet&amp;url=http://bit.ly/1QqLzly"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://bit.ly/1QqLzly"
+        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://bit.ly/1QqLzly"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+            
+            <!-- Disqus comments -->
+            
+                <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+
+        var disqus_shortname = 'ccabanes'; 
+        var disqus_developer =1 ; // developer mode is on
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+            
+            
+        </footer>
+
+    </article>
+
+</main>
+
+    <footer class="site-footer clearfix">
+      <section class="copyright">
+        <a href="/">Cartogramando</a> &copy; 
+               &bull; All rights reserved.
+      </section>
+      <section class="poweredby">Made with Jekyll using 
+        <a href="http://github.com/rosario/kasper">Kasper theme</a>
+      </section>
+    </footer>
+    
+    <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Google Analytics Tracking code -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-68142493-1', 'auto');
+      ga('send', 'pageview');
+    </script> 
+  </body>
+</html>

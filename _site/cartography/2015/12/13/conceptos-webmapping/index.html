@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Cartogramando - Hazlo fácil. Usa un mapa</title>
+    <meta name="description" content="gis, sig, mapping, leaflet, javascript, carto, postgis, spatial, webmapping, openlayers, arcgis" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <!-- Customisation  -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']]},
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: false
+    }
+    );
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+</head>
+
+<body class="post-template">
+    <header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="/">Home</a>
+        <a class="subscribe-button icon" href="http://ccabanes.github.io/about">About me</a>
+        <a class="subscribe-button icon-feed" href="/rss.xml">Subscribe</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post">
+        <header class="post-header">
+            <h1 class="post-title">Conceptos de Cartografía I</h1>
+            <section class="post-meta">                
+                <time class="post-date" datetime="2015-12-13">13 Dec 2015</time>
+                 
+                    on cartography 
+                
+            </section>
+        </header>
+
+    <!-- <header class="post-header">
+            <a id="blog-logo" href="http://ccabanes.github.io">
+                
+                    <span class="blog-title">Cartogramando</span>
+                 
+            </a>
+        </header> -->
+        
+        <!-- <span class="post-meta">
+            <time datetime="2015-12-13">13 Dec 2015</time>
+             
+                on cartography 
+            
+        </span> -->
+
+        <!-- <h1 class="post-title">Conceptos de Cartografía I</h1> -->
+
+        <section class="post-content">
+            <p>Este es el primero de una serie de post con los que quiero empezar este blog, el cual pretendo iniciarlo desde hace ya un tiempo. 
+Hoy en día topógrafos, cartógrafos, geógrafos, agrónomos, forestales, informáticos, telecos, son solo una muestra de los profesionales que nos dedicamos al mundo del GIS. En definitiva, hacer mapas.</p>
+
+<p>Cada uno de estos profesionales suelen intervenir en diferentes partes del proceso de elaboración de mapas. Toma y generación de datos, procesado y depuración de datos, gestión y administración de la información, implementación  y desarrollo de aplicaciones, etcétera.</p>
+
+<p>Sin embargo, todos ellos (o al menos la mayoría de ellos) deberían de conocer con suficiente claridad los conceptos relacionados con la cartografía, la geodesia y su representación. Por ello, con esta serie de post voy a intentar aclarar algunos conceptos que se aplican constantemente y muchas veces no lo tenemos lo suficientemente claro.</p>
+
+<p>Este primer post pretende aclarar un poco los diferentes términos y las definiciones de los conceptos necesarios para aclarar una pregunta. Qué son los sistemas de referencia cartográficos o CRS?</p>
+
+<h3>EPSG</h3>
+
+<p>Las siglas provienen de <em>European Petrolium Survey Group</em>. Esta fué la primera organización que trabajó en el cálculo un conjunto de datos geodésicos como elipsoides, datums, proyecciones, etc. Hoy en día utilizamos su identificador <strong>SRID</strong> para identificar Sistemas de Referencia.</p>
+
+<h3>SRID</h3>
+
+<p>Identificador numérico único con el que podemos identificar los diferentes sistemas de referencia.</p>
+
+<h3>Sistemas de coordenadas</h3>
+
+<p>Según la wikipedia, un sistema de coordenas geométrico es: </p>
+
+<blockquote>
+<p>un sistema que utiliza uno o más números (coordenadas) para determinar unívocamente la posición de un punto o de otro objeto geométrico </p>
+</blockquote>
+
+<p><a href="https://es.wikipedia.org/wiki/Sistema_de_coordenadas">Ver definición completa en la Wikipedia</a>. </p>
+
+<p>Estos sistemas los podemos clasificar en fución de:</p>
+
+<h5>1. Situación del origen</h5>
+
+<p><strong><em>Sistemas de coordenadas topocéntricos</em></strong> : Su origen está situado sobre la superficie terrestre.</p>
+
+<p><strong><em>Sistemas de coordenadas geocéntricos</em></strong> : su centro de coordenadas está situado en el centro de masa terrestre. Se corresponde con sistemas de referencia globales.</p>
+
+<h5>2. Tipo de coordenadas</h5>
+
+<ul>
+<li><p><strong><em>Coordenadas cartesianas</em></strong>: </p>
+
+<ul>
+<li><em>Geocéntricas</em>.</li>
+<li><em>Locales</em>.</li>
+</ul></li>
+<li><p><strong><em>Curvilíneas</em></strong>: </p>
+
+<ul>
+<li><em>Geodésicas o geográficas (φ, λ, h/H)</em>.</li>
+<li><em>Polares</em>.</li>
+<li><em>Otras</em>.</li>
+</ul></li>
+<li><p><strong><em>Coordenadas sobre una proyección</em></strong>:</p>
+
+<ul>
+<li><em>Cartesianas</em>.</li>
+<li><em>Curvilíneas</em>.</li>
+</ul></li>
+</ul>
+
+<h3>Sistema de Referencia Espacial</h3>
+
+<p>Un sistema de referencia define la estructura geométrica para poder definir puntos en el espacio. Queda definido por el origen, el eje, la escala, así como con los algoritmos necesarios para realizar sus transdormaciones espaciales.</p>
+
+<h3>Datum</h3>
+
+<p>Es el conjunto mínimo de parámetros que permiten definir de forma única el orige, la orientación y la escala de un sistema de coordenadas. Normalmente se aplica a la realizad mediante la obtención de un conjunto de coordenadas o bien mediante unos parámetros de transformación.</p>
+
+<h3>Marco de Referencia</h3>
+
+<p>El Marco de Referencia es un cojunto de puntos con ubicación espacial respecto a un sistema de referencia. Normalmente este marco es la forma más común de definir un Datum. </p>
+
+<h3>Sistema de Referencia de Coordenadas (CRS)</h3>
+
+<p>De una forma sencilla, un Sistema de Referencia de coordenadas es la suma de un sistema de coordenadas y un datum, de forma que se pueda definir de forma única un punto sobre dicho sistema. 
+Aplicado al ámbito geográfico, la posición de un punto sobre la Tierra se describe por un conjunto de coordenadas y éstas son inequívocas solo cuando el sistema de referencia de coordenadas al cual están referidas se ha definido completamente. Esto pasa por definir el Datum para dicho sistema. </p>
+
+<p><a href="http://redgeomatica.rediris.es/traducciones/ISO_19111_Sistema_de_Referencia_MABP.pdf">Atributos para describir un CRS (ISO 19111)</a></p>
+
+<p><a href="https://en.wikipedia.org/wiki/Spatial_reference_system">Consulta la descripción completa en Wikipedia</a> </p>
+
+<h6>Sistemas de Referencia más comunes:</h6>
+
+<ul>
+<li><strong>4326 (WGS84)</strong></li>
+<li><strong>3857 (WGS84 Web Mercator)</strong> </li>
+<li><strong>25830 (ETRS89 / UTM zone 30N)</strong></li>
+</ul>
+
+<p>Las imágenes siguientes muestran la definición según <a href="http://spatialreference.org/">spatialreference.org</a> de los sistemas de referencia más comunes en España. Hoy en día es muy común trabajar con datos y servicios que nos brindan la información en dichos sistemas y una pregunta muy común es saber como transformar entre ellos. </p>
+
+<p>Pues bien, entre los sistemas 4326 y 3857 es muy sencillo. Ambos sistemas tienen mismo Datum y Elipsoide de referencia (WGS84). Lo que les hace diferentes es la proyección. Mientras que el sistema 4326 utiliza un sistema de coordenadas geográfico, el 3857 lo hace con un sistema proyectado.</p>
+
+<p><a href="http://spatialreference.org/ref/epsg/4326/"><img src="http://ccabanes.github.io/assets/images/uploads/4326.png" alt="SRID: 4326" title="Ver descripción completa en  spatialreference.org"></a></p>
+
+<p><a href="http://spatialreference.org/ref/sr-org/7483/"><img src="http://ccabanes.github.io/assets/images/uploads/3857.png" alt="SRID: 3857" title="Ver descripción completa en  spatialreference.org"></a></p>
+
+<p><a href="http://spatialreference.org/ref/epsg/25830/"><img src="http://ccabanes.github.io/assets/images/uploads/25830.png" alt="SRID: 25830" title="Ver descripción completa en  spatialreference.org"></a></p>
+
+<h3>Sistemas de Proyección Cartográficos</h3>
+
+<p><a href="https://es.wikipedia.org/wiki/Proyecci%C3%B3n_cartogr%C3%A1fica">Según la definición de la WikiPedia</a></p>
+
+<blockquote>
+<p>Los sistemas de proyección cartográficos son sistemas de representación gráficos que establecen una relación entre la supercicie curva de la Tierra y los de una superficie plana.</p>
+</blockquote>
+
+        </section>
+
+        
+
+        <footer class="post-footer">
+            <!-- If we want to display author's name and bio -->
+            
+                <figure class="author-image">
+                    <a class="img" href="/" style="background-image: url(/assets/images/profile.png)">
+                    <span class="hidden">Carlos Cabanes's Picture</span></a>
+                </figure>
+                <section class="author">
+                    <!-- Author Name -->
+                    <h4> Carlos Cabanes </h4>
+                    <!-- Author Bio -->
+                    <p> 
+                        Cartógrafo. Analista GIS. Cartogramador.
+                    </p>
+                </section>                
+            
+
+            <!-- Share links section -->
+            <section class="share">
+    <h4>Share this post</h4>
+    
+    	
+    	    
+    <a class="icon-twitter" href="http://twitter.com/share?text=Conceptos de Cartografía I&amp;url=http://bit.ly/1YnRnum"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://bit.ly/1YnRnum"
+        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://bit.ly/1YnRnum"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+            
+            <!-- Disqus comments -->
+            
+                <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+
+        var disqus_shortname = 'ccabanes'; 
+        var disqus_developer =1 ; // developer mode is on
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+            
+            
+        </footer>
+
+    </article>
+
+</main>
+    <footer class="site-footer clearfix">
+      <section class="copyright">
+        <a href="/">Cartogramando</a> &copy; 
+               &bull; All rights reserved.
+      </section>
+      <section class="poweredby">Made with Jekyll using 
+        <a href="http://github.com/rosario/kasper">Kasper theme</a>
+      </section>
+    </footer>
+    
+    <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Google Analytics Tracking code -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-68142493-1', 'auto');
+      ga('send', 'pageview');
+    </script> 
+  </body>
+</html>

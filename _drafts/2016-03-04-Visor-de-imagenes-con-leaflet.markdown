@@ -8,7 +8,7 @@ mathjax: false
 mapa: "true"
 urlmapa : imagenLeaflet.html
 mapTitle : Visualicación de imagen en Leaflet.js 
-urlshort: 
+urlshort: http://bit.ly/24HANvH
 ---
 
 Aunque no es la finalidad principal de esta librería, el poder visualizar imágenes sueltas, sin ser nada relacionado con mapas, también es posible con [Leaflet.js](http://leafletjs.com/).
