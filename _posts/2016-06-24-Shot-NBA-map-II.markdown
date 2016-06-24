@@ -8,7 +8,7 @@ mathjax: false
 mapa: "true"
 urlmapa :  
 mapTitle : 
-urlshort:http://bit.ly/28SzwZY
+urlshort: "http://bit.ly/28SzwZY"
 ---
 
 Este es el segundo post relacionado con *Dataviz* de datos JSON y representación sobre mapas. Si quieres puedes ver el primero pincha [aquí.](http://ccabanes.github.io/map/leaflet/lodash/dataviz/nba/2016/05/20/Shot-NBA-map/)
