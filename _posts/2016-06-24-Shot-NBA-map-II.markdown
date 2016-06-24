@@ -2,7 +2,7 @@
 layout: post
 disqus: "true"
 title:  "Manejando colecciones de datos con lodash.js"
-date:   2016-06-24 19:30:00 -0000
+date:   2016-06-24 19:30:00
 categories: "map Leaflet lodash dataviz nba"
 mathjax: false
 mapa: "true"
