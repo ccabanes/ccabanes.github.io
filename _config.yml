@@ -2,8 +2,8 @@ name: Cartogramando
 description: Hazlo fácil. Usa un mapa
 meta_description: "gis, sig, mapping, leaflet, javascript, carto, postgis, spatial, webmapping, openlayers, arcgis"
 
-markdown: redcarpet
-highlighter: pygments
+markdown: kramdown
+highlighter: rouge
 logo: false
 paginate: 10
 baseurl: /
