@@ -23,7 +23,7 @@ Continuando con el contexto del primer post este segundo pretende que el usuario
 ### Filtrando datos con lodash.js
 El punto de partida es la respuesta del servicio sobre las estadísticas de tiro de la temporada de Stephen Curry.
 
-El primer ```select``` se compone a partir de los ```header``` de las columnas que contiene la respuesta del servicio. Existen muchas posibilidades de realizar este proceso que no necesariemente implique usar lodash, pero en este caso se ha utilizado la función  **[_.forEach](https://lodash.com/docs#forEach)** para realizar la iteración y **[_.sortBy](https://lodash.com/docs#sortBy)** usada para ordenar los diferentes elementos del array.
+El primer ```select``` se compone a partir de los ```header``` de las columnas que contiene la respuesta del servicio. Existen muchas posibilidades de realizar este proceso que no necesariemente implique usar lodash, pero en este caso se ha utilizado la función  **[\_.forEach](https://lodash.com/docs#forEach)** para realizar la iteración y **[\_.sortBy](https://lodash.com/docs#sortBy)** usada para ordenar los diferentes elementos del array.
 
 ```java
 _.forEach(_.sortBy(map), function(value, key) {
@@ -39,7 +39,7 @@ _.forEach(_.sortBy(map), function(value, key) {
 ```
 
 La composición de los criterios de búsqueda para el segundo ```select``` es un poco más laboriosa. Rellenar este ```select``` implica conocer en primer lugar cuales son las diferentes posibilidades existentes dentro de los más de 1500 registros de la respuesta del servicio de estadísticas. Una opción clásica sería iterar e ir comparando y almacenando los distintos valores para el parámetro seleccionado. Sin embargo, en este caso, mediante tres funciones fáciles de usar es posible sacar los elemetos distintos para cada propiedad: 
-**[_.indexOf](https://lodash.com/docs#indexOf)**, **[_.map](https://lodash.com/docs#map)** y **[_.uniq](https://lodash.com/docs#uniq)**.
+**[\_.indexOf](https://lodash.com/docs#indexOf)**, **[\_.map](https://lodash.com/docs#map)** y **[\_.uniq](https://lodash.com/docs#uniq)**.
 
 ```java
 var location =_.indexOf(mapOptions.shots.headerShots, mapOptions.shots.criteria);
@@ -47,7 +47,7 @@ var newMapValues = _.map(mapOptions.shots.shotsData.fulldata, location);
 var uniqueValues = _.uniq(newMapValues);
 ```
 
-El cambio de criterio seleccionado provoca que los datos representados cambien. Para obtener los "candidatos" se ha utilizado la función **[_.filter](https://lodash.com/docs#filter)**. Con esta función se consigue obtener como resultado otra colección que cumplan los criterios pasados por parámetro. Para este ejemplo será que cumplan que el nombre de la propiedad sea el valor del primer ```select```   y el valor sea igual a la seleccionada por en el segundo.
+El cambio de criterio seleccionado provoca que los datos representados cambien. Para obtener los "candidatos" se ha utilizado la función **[\_.filter](https://lodash.com/docs#filter)**. Con esta función se consigue obtener como resultado otra colección que cumplan los criterios pasados por parámetro. Para este ejemplo será que cumplan que el nombre de la propiedad sea el valor del primer ```select```   y el valor sea igual a la seleccionada por en el segundo.
 
 ```java
 jQuery("#"+id).on("change", function(){
