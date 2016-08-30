@@ -15,7 +15,7 @@ Si no estás familiarizado con este entorno, te recomiendo que eches un vistazo 
 Para poder empezar a usar la caché en Spring, primero hay que configurarla. En este caso, voy a usar como proveedor de caché [ehCache](http://www.ehcache.org/). Para ello, lo primero es incluir la dependencia en el proyecto:
 
 ######Pom.xml
-{% highlight xml%}
+{% highlight XML%}
 <dependency>
     <groupId>net.sf.ehcache</groupId>
     <artifactId>ehcache</artifactId>
@@ -26,7 +26,7 @@ Para poder empezar a usar la caché en Spring, primero hay que configurarla. En 
 En el fichero ```ApplicationContext.xml``` incluimos lo siguiente:
 
 ######ApplicationContext.xml
-{% highlight xml%}
+{% highlight XML%}
   <beans  xmlns:cache="http://www.springframework.org/schema/cache"  xsi:schemaLocation="http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
     ...
     <cache:annotation-driven mode="aspectj" />
