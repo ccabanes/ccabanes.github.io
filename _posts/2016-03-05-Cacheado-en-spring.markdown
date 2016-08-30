@@ -11,10 +11,10 @@ Desde hace ya unas versiones [Spring](https://spring.io/) facilita el uso de la 
 
 Si no estás familiarizado con este entorno, te recomiendo que eches un vistazo a [gvNix](http://www.gvnix.org/), una de las herramientas más populares de desarrollo rápido de aplicaciones, con la que podrás en unos pocos minutos crear un nuevo proyecto basado en esta tecnología.
 
-###Cómo configurar la caché en Spring?
+### Cómo configurar la caché en Spring?
 Para poder empezar a usar la caché en Spring, primero hay que configurarla. En este caso, voy a usar como proveedor de caché [ehCache](http://www.ehcache.org/). Para ello, lo primero es incluir la dependencia en el proyecto:
 
-######Pom.xml
+###### Pom.xml
 {% highlight XML%}
 <dependency>
     <groupId>net.sf.ehcache</groupId>
@@ -25,7 +25,7 @@ Para poder empezar a usar la caché en Spring, primero hay que configurarla. En 
 
 En el fichero ```ApplicationContext.xml``` incluimos lo siguiente:
 
-######ApplicationContext.xml
+###### ApplicationContext.xml
 {% highlight XML%}
   <beans  xmlns:cache="http://www.springframework.org/schema/cache"  xsi:schemaLocation="http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
     ...
@@ -41,7 +41,7 @@ En el fichero ```ApplicationContext.xml``` incluimos lo siguiente:
 
 En la configuración se especifica el fichero donde están anotadas las diferentes cachés mediante _classpath:ehcache.xml_. Ahora creamos dicho fichero en _src/main/resources_:
 
-######ehcache.xml
+###### ehcache.xml
 En este fichero es donde se definen las diferentes cachés que usará la aplicación. Existen multitud de parámetros para configurar cada una de ellas. [Aquí](http://www.ehcache.org/ehcache.xml) te dejo un ejemplo.
 
 {% highlight xml%}
@@ -67,7 +67,7 @@ En este fichero es donde se definen las diferentes cachés que usará la aplicac
 
 Finalmente tan solo queda por aplicar la caché al método deseado.
 
-####Anotación @Cacheable
+#### Anotación @Cacheable
 Para aplicar la caché sobre un método se usa la anotación ```@Cacheable```:
 
 {% highlight java%}
