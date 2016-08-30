@@ -1,14 +1,14 @@
 ---
 layout: post
 disqus: "true"
-title:  "Datos y gráficos dinámicos on D3.js"
+title:  "Datos y gráficos dinámicos con D3.js"
 date:   2016-08-30 19:30:00 -0000
 categories: "map Leaflet lodash dataviz nba d3.js"
 mathjax: false
 mapa: "true"
 urlmapa :  
 mapTitle :
-urlshort:
+urlshort: "http://bit.ly/2byidEV"
 ---
 
 Este es el tercer y último post relacionado con *Dataviz* usando la fuente de datos de NBA stats. Las entradas anteriores las puedes ver [aquí.](http://ccabanes.github.io/map/leaflet/lodash/dataviz/nba/2016/05/20/Shot-NBA-map/)
