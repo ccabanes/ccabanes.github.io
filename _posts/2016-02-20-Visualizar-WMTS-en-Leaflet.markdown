@@ -24,7 +24,7 @@ Lo primero que se debe de conocer al usar leaflet.js es que por si solo no tiene
 Antes de empezar, es importante recalcar que a diferencia de los servicios WMTS publicados sobre los CRS: 4326 y 3857, no existe ninguna normativa en cuanto a las resoluciones y denominadores de escala para los diferentes niveles de zoom para el resto de sistemas. Esto implica que es necesario modificar el comportamiento habitual de la implementación para adaptarla a las particularidades de cada capa.
 
 ####Ejemplo de servicio WMTS
-Voy a usar los servicios cántabros de ortofotos para realizar un pequeño ejemplo. Si quieres probar con cualquier otro, en la idee tienen una lista con los [servicios públicos WMTS](http://idee.es/web/guest/directorio-de-servicios?p_p_id=DIRSRVIDEE_WAR_DIRSRVIDEEportlet_INSTANCE_q4BW&p_p_lifecycle=1&p_p_state=normal&p_p_mode=view&p_p_col_id=column-1&p_p_col_count=1&_DIRSRVIDEE_WAR_DIRSRVIDEEportlet_INSTANCE_q4BW_descSrv=VISUALIZACION&_DIRSRVIDEE_WAR_DIRSRVIDEEportlet_INSTANCE_q4BW_supertipo=OGC&_DIRSRVIDEE_WAR_DIRSRVIDEEportlet_INSTANCE_q4BW_tipoServicio=WMTS). 
+Voy a usar los servicios cántabros de ortofotos para realizar un pequeño ejemplo. Si quieres probar con cualquier otro, en la idee tienen una lista con los [servicios públicos WMTS](http://idee.es/web/guest/directorio-de-servicios?p_p_id=DIRSRVIDEE_WAR_DIRSRVIDEEportlet_INSTANCE_q4BW&p_p_lifecycle=1&p_p_state=normal&p_p_mode=view&p_p_col_id=column-1&p_p_col_count=1&_DIRSRVIDEE_WAR_DIRSRVIDEEportlet_INSTANCE_q4BW_descSrv=VISUALIZACION&_DIRSRVIDEE_WAR_DIRSRVIDEEportlet_INSTANCE_q4BW_supertipo=OGC&_DIRSRVIDEE_WAR_DIRSRVIDEEportlet_INSTANCE_q4BW_tipoServicio=WMTS).
 
 **Propiedades de la capa de ejemplo:**
 
@@ -35,12 +35,12 @@ Voy a usar los servicios cántabros de ortofotos para realizar un pequeño ejemp
 
 Este servicio a diferencia de otros de este tipo, solo tiene un sistema de referencia sobre el que se sirve la capa *Ortofoto_2014*. Es habitual que para un mismo servicio WMTS existan diferentes CRS sobre los que consumir la información.
 
-Los parámetros más importantes a tener en cuenta para el consumo de este tipo de servicios son el  *ScaleDenominator* y *TopLeftCorner*. 
+Los parámetros más importantes a tener en cuenta para el consumo de este tipo de servicios son el  *ScaleDenominator* y *TopLeftCorner*.
 El parámetro *ScaleDenominator* permite calcular la resolución de cada nivel de zoom ([ver explicación en post anterior](http://bit.ly/1Qy0Zib)) y el parámetro *TopLeftCorner* establece el punto inicial sobre el que contar el desplazamiento en los ejes X,Y para obtener las posiciones de los tiles y montar así la petición.
 
 Ahora sí, vamos con el código:
 
-```javascript
+{% highlight javascript %}
 
 var cantabria_resol = [541.8677504021,270.9338752011,203.2004064008,135.4669376005,101.6002032004,67.7334688003,33.8667344001,16.9333672001,8.4666836,4.2333418,2.1166709,1.05833545,0.529167725,0.2645838625,0.1322919313];
 var ETRS89_Cantabria = new L.Proj.CRS('EPSG:25830',
@@ -52,7 +52,7 @@ origin: [-5120900.0 , 9998100.0]
 var mapCantabria = L.map('mapCantabria', {
         crs: ETRS89_Cantabria,
         continuousWorld: true,
-        worldCopyJump: false, 
+        worldCopyJump: false,
         scale: cantabria_scale
     }).setView([43.421936, -3.781941], 7);
 
@@ -65,7 +65,7 @@ Orto2014_Layer = new L.TileLayer(can_orto_Url_WMTS, {
     opacity: 0.5,
     continuousWorld: true,
     attribution: attrib
-}); 
+});
 var can_base_Url_WMTS = 'http://geoservicios.cantabria.es/inspire/rest/services/Cartografia_Basica_Topografica/MapServer/WMTS?service=WMTS&request=GetTile&version=1.0.0&layer=Cartografia_Basica_Topografica&style=default&tilematrixset=default028mm&TileMatrix={z}&TileRow={y}&TileCol={x}',
 attrib = 'Ortofoto 2014 OGC WMTS',
 Base_Layer = new L.TileLayer(can_base_Url_WMTS, {
@@ -80,7 +80,7 @@ Base_Layer = new L.TileLayer(can_base_Url_WMTS, {
 var carto_base ={
     "Ortofoto 2014": Orto2014_Layer ,   
     "Cartografía Basica" : Base_Layer
-    
+
 };
 
 
@@ -90,5 +90,4 @@ L.control.layers(carto_base).addTo(mapCantabria);
 L.control.mousePosition().addTo(mapCantabria);
 L.control.scale({'position':'bottomleft','metric':true,'imperial':false}).addTo(mapCantabria);
 
-```
-
+{% endhighlight %}

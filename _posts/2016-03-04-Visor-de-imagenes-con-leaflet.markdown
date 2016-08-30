@@ -7,7 +7,7 @@ categories: "leaflet"
 mathjax: false
 mapa: "true"
 urlmapa : imagenLeaflet.html
-mapTitle : Visualización de imagen en Leaflet.js 
+mapTitle : Visualización de imagen en Leaflet.js
 urlshort: http://bit.ly/24HANvH
 ---
 
@@ -22,7 +22,7 @@ En cuanto a la parte técnica, esta se vuelve aún más sencilla dado que no apa
 
 Ahora sí, vamos con el código:
 
-```javascript
+{% highlight javascript%}
 var map = L.map('map', {
         crs: L.CRS.Simple
     });
@@ -31,9 +31,9 @@ var map = L.map('map', {
     var image = L.imageOverlay('https://unsplash.it/700/500/?random', imageBounds).addTo(map);
     map.fitBounds(imageBounds);
     L.control.mousePosition().addTo(map);
-    L.control.centerImage().addTo(map); 
+    L.control.centerImage().addTo(map);
 
-```
+{% endhighlight %}
 
 Como proveedor de imágenes he usado [unsplash](https://unsplash.it/) que en el caso del ejemplo sirve imágenes aleatorias de 700x500. En cuanto al CRS aplicado sobre el mapa es un CRS simple, es decir, un sistema de coordenadas carteriano X-Y.
 
