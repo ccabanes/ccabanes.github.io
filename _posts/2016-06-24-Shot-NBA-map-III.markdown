@@ -2,7 +2,7 @@
 layout: post
 disqus: "true"
 title:  "Datos y gráficos dinámicos on D3.js"
-date:   2016-07-09 19:30:00 -0000
+date:   2016-08-30 19:30:00 -0000
 categories: "map Leaflet lodash dataviz nba d3.js"
 mathjax: false
 mapa: "true"
