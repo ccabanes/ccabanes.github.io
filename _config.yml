@@ -27,3 +27,6 @@ bitly:
 
 #Permalink
 permalink: pretty
+
+# Gems
+gems: [jekyll-paginate]
